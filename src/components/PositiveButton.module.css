@@ -11,6 +11,7 @@
 
 .posBtn:hover {
     background-color: rgba(89, 138, 95, 0.473);
+    cursor: pointer;
 }
 
 .posBtn:active {
