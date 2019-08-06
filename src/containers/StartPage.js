@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PositiveButton from '../components/PositiveButton';
 import { Link } from 'react-router-dom';
 import styles from './StartPage.module.css'
-import Settings from '../components/Settings';
+import TimeSettings from './TimeSettings';
+import Exercises from './Exercises';
 
 export default class StartPage extends Component {
     render() {
@@ -12,9 +13,10 @@ export default class StartPage extends Component {
                     HIIT Timer
                 </header>
                 <div className={styles.content}>
-                    <Settings />
-                    <Link to="/running">
-                        <PositiveButton text={"Start"} />
+                    <Exercises />
+                    <TimeSettings />
+                    <Link to="/running" className={styles.startBtn}>
+                        <PositiveButton text={"Start"} disabled={false}/>
                     </Link>
                 </div>
             </div>
