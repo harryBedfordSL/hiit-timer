@@ -1,14 +1,15 @@
 import React from 'react';
-import logo from '../images/logo.svg';
 import './App.css';
+import StartPage from './StartPage';
+import RunningPage from './RunningPage';
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-          HIIT Timer
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={StartPage} />
+      <Route path="/running" component={RunningPage} />
+    </Switch>
   );
 }
 
