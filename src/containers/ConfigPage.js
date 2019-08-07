@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PositiveButton from '../components/PositiveButton';
 import { Link } from 'react-router-dom';
-import styles from './StartPage.module.css'
+import styles from './ConfigPage.module.css'
 import TimeSettings from './TimeSettings';
 import Exercises from './Exercises';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 
-class StartPage extends Component {
+class ConfigPage extends Component {
     render() {
         return (
             <div className={styles.page}>
@@ -26,7 +26,7 @@ class StartPage extends Component {
                         updateTime={this.props.updateTime}
                     />
                     <Link to="/running" className={styles.startBtn}>
-                        <PositiveButton text={"Start"} disabled={false} />
+                        <PositiveButton text={"Go"} disabled={false} />
                     </Link>
                 </div>
             </div>
@@ -42,4 +42,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(StartPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ConfigPage)
