@@ -9,3 +9,7 @@
     font-size: calc(10px + 3vmin);
     color: white;
 }
+
+.stopBtn {
+    margin-top: 15vh;
+}

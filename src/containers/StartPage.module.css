@@ -10,7 +10,8 @@
 }
 
 .title {
-    font-size: 10vw;
+    font-size: calc(40px + 8vmin);
+    margin-top: 2vh;
 }
 
 .content {
@@ -22,5 +23,9 @@
 }
 
 .startBtn {
-    margin-top: 15vh
+    margin-top: 10vh;
+}
+
+.test {
+    width: 30vw;
 }
