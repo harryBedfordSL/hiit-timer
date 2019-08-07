@@ -5,33 +5,41 @@ export default class Exercises extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            exercises: ["exercise1", "exercise2"]
+            inputText: ""
         }
-        this.addExercise = this.addExercise.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.submitForm = this.submitForm.bind(this)
     }
 
-    addExercise(exercise) {
-        this.setState({exercises: [...this.state.exercises, exercise]})
+    onChange(event) {
+        this.setState({inputText: event.target.value})
+    }
+
+    submitForm(event) {
+        event.preventDefault()
+        this.props.addExercise(this.state.inputText)
+        this.setState({inputText: ""})
     }
 
     render () {
         return (
             <div>
-                <form onSubmit={() => console.log("Submitted")}>
+                <form onSubmit={event => this.submitForm(event)}>
                     Add Exercise: <br/>
-                    <input className={styles.input} type="text" />
+                    <input 
+                        className={styles.input} 
+                        type="text" 
+                        value={this.state.inputText}
+                        onChange={this.onChange}
+                    />
                 </form>
-                <div>
-                    <ul>
-                        {console.log(this.state.exercises)}
-                        {this.state && this.state.exercises.map(el => {
-                            return (
-                                <li key={el}>{el}</li>
-                            )
-                        })}
-                    </ul>
+                <div className={styles.exerciseContainer}>
+                    {this.props && this.props.exercises.map((el, index) => {
+                        return (
+                            <span className={styles.exercise} key={index}>{index+1} - {el}</span>
+                        )
+                    })}
                 </div>
-                <br/>
             </div>
         )
     }
