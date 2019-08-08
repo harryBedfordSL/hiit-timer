@@ -1,14 +1,16 @@
 import React from 'react';
-import logo from '../images/logo.svg';
 import './App.css';
+import ConfigPage from './ConfigPage';
+import RunningPage from './RunningPage';
+import { Switch, Route, Redirect } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-          HIIT Timer
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={ConfigPage} />
+      <Route path="/running" component={RunningPage} />
+      <Redirect to="/" />
+    </Switch>
   );
 }
 
