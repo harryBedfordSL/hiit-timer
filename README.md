@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is a web application to help carry out high intensity interval training (HIIT). The user is able to input their desired exercises, work time and rest time. The app will then loop through each exercise, for the allocated work and rest times, and display a countdown timer. 
 
 ## Available Scripts
 
