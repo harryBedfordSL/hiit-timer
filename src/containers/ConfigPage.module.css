@@ -9,14 +9,19 @@
 }
 
 .title {
+    flex: 1;
     font-size: calc(40px + 8vmin);
     margin: 2vh 1vh 0 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
+    flex: 2;
     justify-content: space-evenly;
 }
