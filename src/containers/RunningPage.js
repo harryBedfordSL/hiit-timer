@@ -10,7 +10,7 @@ class RunningPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            running: false,
+            isRunning: false,
             finished: false,
             startPauseIcon: 'play',
             exerciseNumber: 0,
@@ -24,16 +24,14 @@ class RunningPage extends Component {
     }
 
     startOrPause() {
-        const isRunning = !this.state.running
-        let nextText;
+        const { isRunning } = this.state;
         if (isRunning) {
-            nextText = 'pause';
-            this.startTimer();
-        } else {
-            nextText = 'play';
             this.stopTimer();
+            this.setState({isRunning: !isRunning, startPauseIcon: 'play'});
+        } else {
+            this.startTimer();
+            this.setState({isRunning: !isRunning, startPauseIcon: 'pause'});
         }
-        this.setState({running: isRunning, startPauseIcon: nextText})
     }
 
     stopTimer() {
@@ -45,17 +43,18 @@ class RunningPage extends Component {
     }
 
     tick() {
-        if (this.state.secondsLeft > 0) {this.setState({secondsLeft: this.state.secondsLeft - 1})}
+        const { secondsLeft, resting, exerciseNumber } = this.state;
+        const { restTime, workTime, exercises } = this.props;
+        if (secondsLeft > 0) {this.setState({secondsLeft: secondsLeft - 1})}
         else {
             this.stopTimer();
-            const resting = !this.state.resting;
-            const newIndex = resting ? this.state.exerciseNumber : this.state.exerciseNumber + 1;
+            const newExerciseNumber = resting ? exerciseNumber + 1 : exerciseNumber;
             this.setState({
-                exerciseNumber: newIndex,
-                secondsLeft: resting ? this.props.restTime : this.props.workTime,
-                resting
+                exerciseNumber: newExerciseNumber,
+                secondsLeft: resting ? workTime : restTime,
+                resting: !resting
             });
-            const isAnotherExercise = this.props.exercises[this.state.exerciseNumber] && !(newIndex === this.props.exercises.length-1 && this.state.resting);
+            const isAnotherExercise = exercises[exerciseNumber] && (newExerciseNumber !== exercises.length-1 || resting);
             if (isAnotherExercise) {
                 this.startTimer();
             } else {
@@ -73,6 +72,7 @@ class RunningPage extends Component {
                     : <Countdown 
                         resting={resting}
                         exercise={this.props.exercises[exerciseNumber]}
+                        nextExercise={this.props.exercises[exerciseNumber+1]}
                         secondsLeft={secondsLeft}
                         startPauseIcon={startPauseIcon}
                         startOrPause={this.startOrPause}
