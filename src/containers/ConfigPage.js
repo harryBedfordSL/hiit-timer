@@ -26,7 +26,7 @@ class ConfigPage extends Component {
                         updateTime={this.props.updateTime}
                     />
                     <Link to="/running" >
-                        <PositiveButton text={"🡆"} disabled={false} />
+                        <PositiveButton icon={'angle right'} disabled={false} />
                     </Link>
                 </div>
             </div>

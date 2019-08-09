@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './PositiveButton.module.css';
+import { Icon } from 'semantic-ui-react';
 
 export default class PositiveButton extends Component {    
     render() {
@@ -9,7 +10,11 @@ export default class PositiveButton extends Component {
                 className={styles.posBtn}
                 onClick={this.props.onClick}
             >
-                {this.props.text}
+                <Icon
+                    className={styles.icon}
+                    name={this.props.icon}
+                    size='small'
+                />
             </button>
         )
     }

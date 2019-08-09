@@ -1,8 +1,10 @@
 .posBtn {
+    display: flex;
     color: white;
     background-color: rgba(89, 138, 95, 0.719);
     border-radius: 10px;
     border-style: none;
+    height: 10vh;
     width: fit-content;
     letter-spacing: 0.2vw;
     font-size: 10vh;
@@ -16,4 +18,8 @@
 
 .posBtn:active {
     background-color: rgba(89, 138, 95, 0.267);
+}
+
+.icon {
+    margin: auto !important;
 }
