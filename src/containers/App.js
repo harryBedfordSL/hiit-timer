@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import ConfigPage from './ConfigPage';
 import RunningPage from './RunningPage';
 import { Switch, Route, Redirect } from "react-router-dom";

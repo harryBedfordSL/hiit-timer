@@ -23,7 +23,7 @@ export default class Exercises extends Component {
 
     render () {
         return (
-            <div>
+            <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>
                     Add Exercise: <br/>
                     <input 

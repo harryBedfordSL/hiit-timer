@@ -1,24 +1,31 @@
 .input {
     padding: 1vh;
-    width: 50vw;
+    width: 80vw;
     text-align: center;
     border-radius: 5px;
     border-style: none;
+    margin: 1vh 0 1vh 0;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .exercise {
     height: fit-content;
     margin: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-basis: 27%;
 }
 
 .exerciseContainer {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    justify-content: center;
     margin: 1vh 0 1vh 0;
     border-radius: 5px;
     height: 20vh;
-    width: 75vw;
+    width: 85vw;
     background-color: rgba(0, 0, 0, 0.185);
     overflow-y: auto;
     font-size: 0.75em;
