@@ -1,51 +1,47 @@
 import React, { Component } from 'react';
-import NegativeButton from '../components/NegativeButton';
-import { Link } from 'react-router-dom';
-import styles from './RunningPage.module.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PositiveButton from '../components/PositiveButton';
+import DonePage from '../components/DonePage';
+import Countdown from '../components/Countdown';
 
 import * as actions from '../actions/actions';
-
-let timer;
 
 class RunningPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Running: false,
-            StartPause: 'play',
-            index: 0,
-            currentExercise: this.props.exercises[0],
+            running: false,
+            finished: false,
+            startPauseIcon: 'play',
+            exerciseNumber: 0,
             resting: false,
             secondsLeft: this.props.workTime
         }
-        this.StartOrPause = this.StartOrPause.bind(this)
+        this.startOrPause = this.startOrPause.bind(this)
         this.tick = this.tick.bind(this)
         this.stopTimer = this.stopTimer.bind(this)
         this.startTimer = this.startTimer.bind(this)
     }
 
-    StartOrPause() {
-        const isRunning = !this.state.Running
+    startOrPause() {
+        const isRunning = !this.state.running
         let nextText;
         if (isRunning) {
             nextText = 'pause';
             this.startTimer();
         } else {
-            nextText = 'play'
+            nextText = 'play';
             this.stopTimer();
         }
-        this.setState({Running: isRunning, StartPause: nextText})
+        this.setState({running: isRunning, startPauseIcon: nextText})
     }
 
     stopTimer() {
-        clearInterval(timer)
+        clearInterval(this.timer)
     }
 
     startTimer() {
-        timer = setInterval(this.tick, 1000)
+        this.timer = setInterval(this.tick, 1000)
     }
 
     tick() {
@@ -53,44 +49,36 @@ class RunningPage extends Component {
         else {
             this.stopTimer();
             const resting = !this.state.resting;
-            const newIndex = resting ? this.state.index : this.state.index + 1;
+            const newIndex = resting ? this.state.exerciseNumber : this.state.exerciseNumber + 1;
             this.setState({
-                index: newIndex,
-                currentExercise: resting ? "Rest" : this.props.exercises[newIndex],
+                exerciseNumber: newIndex,
                 secondsLeft: resting ? this.props.restTime : this.props.workTime,
                 resting
             });
-            const isAnotherExercise = this.state.currentExercise && !(newIndex === this.props.exercises.length-1 && this.state.resting);
+            const isAnotherExercise = this.props.exercises[this.state.exerciseNumber] && !(newIndex === this.props.exercises.length-1 && this.state.resting);
             if (isAnotherExercise) {
                 this.startTimer();
             } else {
-                this.setState({currentExercise: "Done", secondsLeft: 0, resting: false})
+                this.setState({finished: true})
             }
         }
     }
 
     render() {
+        const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished } = this.state;
         return (
-            <div className={styles.page}>
-                <header className={styles.title}>
-                    {this.state.resting 
-                        ? "Rest" 
-                        : this.state.currentExercise
-                    }
-                </header>
-                <div className={styles.timer}>
-                    {this.state.secondsLeft}
-                </div>
-                <div className={styles.interactionBar}>
-                    <PositiveButton
-                        className={styles.btn}
-                        icon={this.state.StartPause}
-                        onClick={this.StartOrPause}
+            <div>
+                {finished
+                    ? <DonePage />
+                    : <Countdown 
+                        resting={resting}
+                        exercise={this.props.exercises[exerciseNumber]}
+                        secondsLeft={secondsLeft}
+                        startPauseIcon={startPauseIcon}
+                        startOrPause={this.startOrPause}
+                        stopTimer={this.stopTimer}
                     />
-                    <Link to="/" className={styles.btn}>
-                        <NegativeButton icon={'stop'} onClick={this.stopTimer} />
-                    </Link>
-                </div>
+                }
             </div>
         );
     }
