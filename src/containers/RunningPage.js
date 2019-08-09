@@ -71,7 +71,7 @@ class RunningPage extends Component {
                     ? <DonePage />
                     : <Countdown 
                         resting={resting}
-                        exercise={this.props.exercises[exerciseNumber]}
+                        currentExercise={this.props.exercises[exerciseNumber]}
                         nextExercise={this.props.exercises[exerciseNumber+1]}
                         secondsLeft={secondsLeft}
                         startPauseIcon={startPauseIcon}
