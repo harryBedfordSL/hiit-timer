@@ -15,7 +15,7 @@ class RunningPage extends Component {
         super(props);
         this.state = {
             Running: false,
-            StartPause: "Start",
+            StartPause: "►",
             index: 0,
             currentExercise: this.props.exercises[0],
             resting: false,
@@ -31,10 +31,10 @@ class RunningPage extends Component {
         const isRunning = !this.state.Running
         let nextText;
         if (isRunning) {
-            nextText = "Pause";
+            nextText = "❚❚";
             this.startTimer();
         } else {
-            nextText = "Start"
+            nextText = "►"
             this.stopTimer();
         }
         this.setState({Running: isRunning, StartPause: nextText})
@@ -88,7 +88,7 @@ class RunningPage extends Component {
                         onClick={this.StartOrPause}
                     />
                     <Link to="/" className={styles.btn}>
-                        <NegativeButton text={"Stop"} onClick={this.stopTimer} />
+                        <NegativeButton text={"⏹"} onClick={this.stopTimer} />
                     </Link>
                 </div>
             </div>

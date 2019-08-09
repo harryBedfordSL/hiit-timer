@@ -25,8 +25,8 @@ class ConfigPage extends Component {
                         restTime={this.props.restTime}
                         updateTime={this.props.updateTime}
                     />
-                    <Link to="/running" className={styles.startBtn}>
-                        <PositiveButton text={"Go"} disabled={false} />
+                    <Link to="/running" >
+                        <PositiveButton text={"🡆"} disabled={false} />
                     </Link>
                 </div>
             </div>
