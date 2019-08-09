@@ -12,15 +12,29 @@
 
 .interactionBar {
     margin-top: 15vh;
-    width: 50vw;
+    width: 75vw;
     display: flex;
     justify-content: space-evenly;
 }
 
 .title {
     font-size: calc(40px + 8vmin);
+    width: 90%;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    line-height: 1em;
 }
 
 .timer {
+    font-family: "Dosis";
     font-size: calc(100px + 15vmin);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
