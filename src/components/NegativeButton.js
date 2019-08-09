@@ -4,14 +4,15 @@ import { Icon } from 'semantic-ui-react';
 
 export default class NegativeButton extends Component {    
     render() {
+        const { onClick, icon } = this.props;
         return (
             <button
                 className={styles.negBtn}
-                onClick={this.props.onClick}
+                onClick={onClick}
             >
                 <Icon
                     className={styles.icon}
-                    name={this.props.icon} 
+                    name={icon} 
                     size='small'
                 />
             </button>
