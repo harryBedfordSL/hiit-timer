@@ -6,18 +6,23 @@ import styles from './Countdown.module.css';
 
 export default class Countdown extends Component {
     render() {
-        const { resting, exercise, secondsLeft, startPauseIcon, startOrPause, stopTimer } = this.props;
+        const { resting, exercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer } = this.props;
         return (
             <div className={styles.page}>
-                <header className={styles.title}>
-                    {resting 
-                        ? "Rest" 
-                        : exercise
-                    }
+                <div>
+                    <header className={styles.title}>
+                        {resting 
+                            ? "Rest"
+                            : exercise
+                        }
                     </header>
-                    <div className={styles.timer}>
-                        {secondsLeft}
+                    <div className={styles.upNext}>
+                        {resting && `Next up: ${nextExercise}`}
                     </div>
+                </div>
+                <div className={styles.timer}>
+                    {secondsLeft}
+                </div>
                 <div className={styles.interactionBar}>
                     <PositiveButton
                         className={styles.btn}
