@@ -19,7 +19,6 @@
 
 .title {
     font-size: calc(40px + 8vmin);
-    width: 90%;
     overflow-wrap: break-word;
     overflow-y: auto;
     display: flex;
@@ -37,4 +36,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.upNext {
+    height: 1em;
+    line-height: 1em;
+    width: 75vw;
 }
