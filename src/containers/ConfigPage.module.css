@@ -25,3 +25,12 @@
     flex: 2;
     justify-content: space-evenly;
 }
+
+.invalidLink {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.validLink {
+    opacity: 1;
+}
