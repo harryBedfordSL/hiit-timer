@@ -3,8 +3,8 @@ import types from '../actions/types';
 const INITIAL_STATE = {
     config: {
         exercises: [],
-        workTime: "30",
-        restTime: "30"
+        workTime: 30,
+        restTime: 30
     },
     isConfigValid: false
 }
