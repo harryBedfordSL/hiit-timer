@@ -85,9 +85,9 @@ class RunningPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    exercises: state.exercises,
-    workTime: state.workTime,
-    restTime: state.restTime
+    exercises: state.config.exercises,
+    workTime: state.config.workTime,
+    restTime: state.config.restTime
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

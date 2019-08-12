@@ -32,5 +32,6 @@
 }
 
 .validLink {
+    pointer-events: all;
     opacity: 1;
 }
