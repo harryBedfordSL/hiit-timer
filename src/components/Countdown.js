@@ -17,7 +17,7 @@ export default class Countdown extends Component {
                         }
                     </header>
                     <div className={styles.upNext}>
-                        {resting && `Next up: ${nextExercise}`}
+                        {resting && `Next: ${nextExercise}`}
                     </div>
                 </div>
                 <div className={styles.timer}>
