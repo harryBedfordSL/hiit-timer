@@ -17,6 +17,14 @@
     flex-basis: 27%;
 }
 
+.exercise:hover {
+    cursor: pointer;
+}
+
+.exercise:active {
+    color: rgba(255, 255, 255, 0.75);
+}
+
 .exerciseContainer {
     display: flex;
     flex-wrap: wrap;

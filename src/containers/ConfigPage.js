@@ -8,12 +8,39 @@ import { connect } from 'react-redux';
 import styles from './ConfigPage.module.css';
 
 import * as actions from '../actions/actions';
+import EditModal from '../components/EditModal';
 
 class ConfigPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showEditModal: false,
+            exerciseToEdit: null
+        }
+        this.openEditModal = this.openEditModal.bind(this)
+        this.closeEditModal = this.closeEditModal.bind(this)
+    }
+
+    openEditModal = (exercise) => {
+        this.setState({
+            showEditModal: true,
+            exerciseToEdit: exercise
+        })
+    }
+
+    closeEditModal = () => {
+        this.setState({
+            showEditModal: false,
+            exerciseToEdit: null
+        })
+    }
+
     render = () => {
         const { isConfigValid } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.normalPage}>
+                {this.state.showEditModal && <div className={styles.backDrop} onClick={this.closeEditModal} />}
+                <EditModal handleClose={this.closeEditModal} show={this.state.showEditModal} children={this.state.exerciseToEdit} />
                 <header className={styles.title}>
                     HIIT Timer
                 </header>
@@ -21,6 +48,7 @@ class ConfigPage extends Component {
                     <Exercises
                         exercises={this.props.exercises}
                         addExercise={this.props.addExercise}
+                        openEditModal={this.openEditModal}
                     />
                     <TimeSettings
                         workTime={this.props.workTime}
@@ -28,7 +56,10 @@ class ConfigPage extends Component {
                         updateTime={this.props.updateTime}
                     />
                     <Link to="/running" className={isConfigValid ? styles.validLink : styles.invalidLink} >
-                        <PositiveButton icon={'angle right'} />
+                        <PositiveButton
+                            icon={'angle right'}
+                            size='small'
+                        />
                     </Link>
                 </div>
             </div>
