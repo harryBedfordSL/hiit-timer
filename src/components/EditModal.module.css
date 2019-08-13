@@ -29,10 +29,13 @@
     display: flex;
     flex: 1;
     justify-content: space-around;
+    align-items: center;
     flex-direction: column;
 }
 
 .exerciseName {
+    height: 10vh;
+    text-align: center;
     font-size: 3em;
     line-height: 0.75em;
 }
@@ -41,4 +44,17 @@
     width: 75vw;
     display: flex;
     justify-content: space-evenly;
+}
+
+.editInput {
+    font-family: 'Raleway';
+    height: 10vh;
+    text-align: center;
+    font-size: 3em;
+    line-height: 0.75em;
+    display: flex;
+    width: 85%;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }

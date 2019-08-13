@@ -36,11 +36,23 @@ class ConfigPage extends Component {
     }
 
     render = () => {
-        const { isConfigValid } = this.props;
+        const { isConfigValid, removeExercise, editExercise } = this.props;
         return (
             <div className={styles.normalPage}>
-                {this.state.showEditModal && <div className={styles.backDrop} onClick={this.closeEditModal} />}
-                <EditModal handleClose={this.closeEditModal} show={this.state.showEditModal} children={this.state.exerciseToEdit} />
+                {this.state.showEditModal && <div className={styles.backDrop} />}
+                <EditModal
+                    handleClose={this.closeEditModal}
+                    show={this.state.showEditModal}
+                    exerciseToEdit={this.state.exerciseToEdit} 
+                    deleteExercise={() => {
+                        removeExercise(this.state.exerciseToEdit)
+                        this.setState({showEditModal: false, exerciseToEdit: null})
+                    }}
+                    save={(updatedExercise) => {
+                        editExercise(this.state.exerciseToEdit, updatedExercise)
+                        this.setState({showEditModal: false, exerciseToEdit: null})
+                    }}
+                />
                 <header className={styles.title}>
                     HIIT Timer
                 </header>
