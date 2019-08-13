@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PositiveButton from './PositiveButton';
-import NegativeButton from './NegativeButton';
+import PositiveButton from './buttons/PositiveButton';
+import NegativeButton from './buttons/NegativeButton';
 import { Link } from 'react-router-dom';
 import styles from './Countdown.module.css';
 

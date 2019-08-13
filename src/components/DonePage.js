@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PositiveButton from './PositiveButton';
+import PositiveButton from './buttons/PositiveButton';
 import styles from './DonePage.module.css';
 
 export default class DonePage extends Component {

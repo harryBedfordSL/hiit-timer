@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PositiveButton from '../components/PositiveButton';
+import PositiveButton from '../components/buttons/PositiveButton';
 import { Link } from 'react-router-dom';
 import TimeSettings from './TimeSettings';
 import Exercises from './Exercises';
