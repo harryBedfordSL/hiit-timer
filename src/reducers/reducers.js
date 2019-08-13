@@ -20,6 +20,15 @@ export default (state = INITIAL_STATE, action) => {
                 }
             };
 
+        case types.UPDATE_EXERCISES:
+            return {
+                ...state,
+                config: {
+                    ...state.config,
+                    exercises: action.exercises
+                }
+            }
+
         case types.UPDATE_WORK_TIME:
             return {
                 ...state,

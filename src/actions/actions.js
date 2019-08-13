@@ -15,12 +15,28 @@ const updatingValidConfig = isValid => ({
     isValid
 })
 
+const updatingExercises = exercises => ({
+    type: types.UPDATE_EXERCISES,
+    exercises
+})
+
 export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
     dispatch(validateConfig(filteredConfig, exercise))
     dispatch(addingExercise(exercise))
 }
+
+export const editExercise = (prevExercise, newExercise) => (dispatch, getState) => {
+    let exercises = getState().config.exercises;
+    const indexOfEditedExercise = exercises.indexOf(prevExercise);
+    exercises[indexOfEditedExercise] = newExercise;
+    dispatch(updatingExercises(exercises))
+}
     
+export const removeExercise = exercise => (dispatch, getState) => {
+    const newExercises = getState().config.exercises.filter(elem => elem !== exercise);
+    dispatch(updatingExercises(newExercises))
+}
 
 export const updateTime = (actionType, time) => (dispatch, getState) => {
     const key = actionType === types.UPDATE_WORK_TIME
