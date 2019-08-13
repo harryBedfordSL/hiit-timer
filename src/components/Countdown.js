@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './Countdown.module.css';
 
 export default class Countdown extends Component {
-    render() {
+    render = () => {
         const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer } = this.props;
         return (
             <div className={styles.page}>

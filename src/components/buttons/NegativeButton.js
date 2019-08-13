@@ -3,7 +3,7 @@ import styles from './NegativeButton.module.css';
 import { Icon } from 'semantic-ui-react';
 
 export default class NegativeButton extends Component {    
-    render() {
+    render = () => {
         const { onClick, icon } = this.props;
         return (
             <button

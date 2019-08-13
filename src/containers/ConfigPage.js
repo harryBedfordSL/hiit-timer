@@ -10,7 +10,7 @@ import styles from './ConfigPage.module.css';
 import * as actions from '../actions/actions';
 
 class ConfigPage extends Component {
-    render() {
+    render = () => {
         const { isConfigValid } = this.props;
         return (
             <div className={styles.page}>

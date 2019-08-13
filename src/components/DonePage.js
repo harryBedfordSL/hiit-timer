@@ -4,7 +4,7 @@ import PositiveButton from './buttons/PositiveButton';
 import styles from './DonePage.module.css';
 
 export default class DonePage extends Component {
-    render() {
+    render = () => {
         return (
             <div className={styles.page}>
                 <div className={styles.title}>

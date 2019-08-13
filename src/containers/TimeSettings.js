@@ -9,13 +9,13 @@ export default class TimeSettings extends Component {
         this.increment = this.increment.bind(this);
     }
 
-    handleChange(event) {
+    handleChange = (event) => {
         const key = event.target.id;
         const value = event.target.value;
         this.props.updateTime(key, value);
     }
 
-    increment(args) {
+    increment = (args) => {
         const { direction, target, prevValue } = args;
         if (direction === 'minus') {
             this.props.updateTime(target, prevValue-1)
@@ -24,7 +24,7 @@ export default class TimeSettings extends Component {
         }
     }
 
-    render() {
+    render = () => {
         return (
             <div>
                 <NumberInput

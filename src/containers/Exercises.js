@@ -11,17 +11,17 @@ export default class Exercises extends Component {
         this.submitForm = this.submitForm.bind(this)
     }
 
-    onChange(event) {
+    onChange = (event) => {
         this.setState({inputText: event.target.value})
     }
 
-    submitForm(event) {
+    submitForm = (event) => {
         event.preventDefault()
         this.props.addExercise(this.state.inputText)
         this.setState({inputText: ""})
     }
 
-    render () {
+    render = () => {
         return (
             <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>

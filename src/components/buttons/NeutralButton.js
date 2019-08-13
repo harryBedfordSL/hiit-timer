@@ -3,7 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import styles from './NeutralButton.module.css';
 
 export default class NeutralButton extends Component {
-    render() {
+    render = () => {
         const { handleClick, args, icon } = this.props;
         return (
             <button

@@ -23,7 +23,7 @@ class RunningPage extends Component {
         this.startTimer = this.startTimer.bind(this)
     }
 
-    startOrPause() {
+    startOrPause = () => {
         const { isRunning } = this.state;
         if (isRunning) {
             this.stopTimer();
@@ -34,15 +34,15 @@ class RunningPage extends Component {
         }
     }
 
-    stopTimer() {
+    stopTimer = () => {
         clearInterval(this.timer)
     }
 
-    startTimer() {
+    startTimer = () => {
         this.timer = setInterval(this.tick, 1000)
     }
 
-    tick() {
+    tick = () => {
         const { secondsLeft, resting, exerciseNumber } = this.state;
         const { restTime, workTime, exercises } = this.props;
         if (secondsLeft > 0) {this.setState({secondsLeft: secondsLeft - 1})}
@@ -63,7 +63,7 @@ class RunningPage extends Component {
         }
     }
 
-    render() {
+    render = () => {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished } = this.state;
         return (
             <div>
