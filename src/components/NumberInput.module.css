@@ -1,17 +1,10 @@
 .input {
     padding: 1vh;
-    width: 65vw;
+    width: 50vw;
     text-align: center;
     border-radius: 5px;
     border-style: none;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
-}
-
-.incrementButton {
-    border-radius: 0.25em;
-    color: white;
-    background-color: rgb(0, 0, 0, 0.185);
-    border-style: none;
 }
 
 .interactiveSection {
@@ -20,4 +13,3 @@
     justify-content: space-between;
     margin: 2vh;
 }
-

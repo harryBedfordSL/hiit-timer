@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
 import styles from './NumberInput.module.css';
-import { Icon } from 'semantic-ui-react';
+import NeutralButton from './buttons/NeutralButton';
 
 export default class NumberInput extends Component {
     render() {
+        const { inputTitle, increment, id, value, min, max, onChange} = this.props;
         return (
             <div>
                 <div>
-                    {this.props.inputTitle}
+                    {inputTitle}
                 </div>
                 <div className={styles.interactiveSection}>
-                    <button
-                        className={styles.incrementButton}
-                        onClick={() => this.props.increment('minus', this.props.id, this.props.value)}>
-                        <Icon 
-                            className={styles.icon}
-                            name='minus'
-                        />
-                    </button>
+                    <NeutralButton 
+                        handleClick={increment}
+                        args={{direction: 'minus', target: id, prevValue: value}}
+                        icon='minus'
+                    />
                     <input
-                        id={this.props.id}
+                        id={id}
                         className={styles.input}
                         type='number'
-                        min={this.props.min}
-                        max={this.props.max}
-                        value={this.props.value}
-                        onChange={this.props.onChange}    
+                        min={min}
+                        max={max}
+                        value={value}
+                        onChange={onChange}    
                     />
-                    <button
-                        className={styles.incrementButton}
-                        onClick={() => this.props.increment('plus', this.props.id, this.props.value)}>
-                        <Icon 
-                            className={styles.icon}
-                            name='plus'
-                        />
-                    </button>
+                    <NeutralButton 
+                        handleClick={increment}
+                        args={{direction: 'plus', target: id, prevValue: value}}
+                        icon='plus'
+                    />
                 </div>
             </div>
         )
