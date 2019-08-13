@@ -33,8 +33,9 @@ export const editExercise = (prevExercise, newExercise) => (dispatch, getState) 
     dispatch(updatingExercises(exercises))
 }
     
-export const removeExercise = exercise => (dispatch, getState) => {
-    const newExercises = getState().config.exercises.filter(elem => elem !== exercise);
+export const removeExercise = numberInList => (dispatch, getState) => {
+    const indexInExercises = numberInList - 1;
+    const newExercises = getState().config.exercises.filter((_, i) => indexInExercises !== i);
     dispatch(updatingExercises(newExercises))
 }
 

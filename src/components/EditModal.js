@@ -8,7 +8,6 @@ export default class EditModal extends Component {
         super(props);
         this.state = {
             editing: false,
-            editedExercise: ''
         }
         this.enableEditMode = this.enableEditMode.bind(this)
     }
@@ -25,10 +24,11 @@ export default class EditModal extends Component {
     }
     
     render = () => {
-        const { handleClose, show, exerciseToEdit, deleteExercise, save} = this.props;
+        const { handleClose, show, exerciseToEdit, numberInList, deleteExercise, save} = this.props;
         return (
         <div className={show ? styles.showModal : styles.hideModal}>
             <div className={styles.toolBar}>
+                <span className={styles.numberInList}>{numberInList}</span>
                 <NegativeButton
                     onClick={() => {
                         handleClose()
@@ -61,7 +61,7 @@ export default class EditModal extends Component {
                         ? <PositiveButton
                         onClick={() => {
                             save(this.state.editedExercise)
-                            this.setState({editing: false, editedExercise: ''})
+                            this.setState({editing: false})
                         }}
                         icon='save'
                         size='mini' />

@@ -39,7 +39,7 @@ export default class Exercises extends Component {
                                 <span
                                     key={index}
                                     className={styles.exercise}
-                                    onClick={() => this.props.openEditModal(el)}
+                                    onClick={() => this.props.openEditModal(el, index+1)}
                                 >
                                     {index+1} - {el}
                                 </span>

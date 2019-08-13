@@ -21,8 +21,13 @@
 
 .toolBar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 1vh;
+}
+
+.numberInList{
+    margin-left: 4vw;
 }
 
 .modalBody {

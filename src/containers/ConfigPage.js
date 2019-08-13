@@ -15,23 +15,22 @@ class ConfigPage extends Component {
         super(props);
         this.state = {
             showEditModal: false,
-            exerciseToEdit: null
         }
         this.openEditModal = this.openEditModal.bind(this)
         this.closeEditModal = this.closeEditModal.bind(this)
     }
 
-    openEditModal = (exercise) => {
+    openEditModal = (exercise, index) => {
         this.setState({
             showEditModal: true,
-            exerciseToEdit: exercise
+            exerciseToEdit: exercise,
+            numberInList: index
         })
     }
 
     closeEditModal = () => {
         this.setState({
             showEditModal: false,
-            exerciseToEdit: null
         })
     }
 
@@ -43,14 +42,15 @@ class ConfigPage extends Component {
                 <EditModal
                     handleClose={this.closeEditModal}
                     show={this.state.showEditModal}
-                    exerciseToEdit={this.state.exerciseToEdit} 
+                    exerciseToEdit={this.state.exerciseToEdit}
+                    numberInList={this.state.numberInList} 
                     deleteExercise={() => {
-                        removeExercise(this.state.exerciseToEdit)
-                        this.setState({showEditModal: false, exerciseToEdit: null})
+                        removeExercise(this.state.numberInList)
+                        this.setState({showEditModal: false})
                     }}
                     save={(updatedExercise) => {
                         editExercise(this.state.exerciseToEdit, updatedExercise)
-                        this.setState({showEditModal: false, exerciseToEdit: null})
+                        this.setState({showEditModal: false})
                     }}
                 />
                 <header className={styles.title}>
