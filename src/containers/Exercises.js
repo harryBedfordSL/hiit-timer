@@ -36,13 +36,13 @@ export default class Exercises extends Component {
                 <div className={styles.exerciseContainer}>
                     {this.props && this.props.exercises.map((el, index) => {
                         return (
-                                <span
-                                    key={index}
-                                    className={styles.exercise}
-                                    onClick={() => this.props.openEditModal(el, index+1)}
-                                >
-                                    {index+1} - {el}
-                                </span>
+                            <span
+                                key={index}
+                                className={styles.exercise}
+                                onClick={() => this.props.openEditModal(el, index+1)}
+                            >
+                                {index+1} - {el}
+                            </span>
                         )
                     })}
                 </div>
