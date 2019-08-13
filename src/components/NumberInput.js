@@ -12,10 +12,8 @@ export default class NumberInput extends Component {
                 </div>
                 <div className={styles.interactiveSection}>
                     <NeutralButton 
-                        increment={increment}
-                        direction='minus'
-                        id={id}
-                        value={value}
+                        handleClick={increment}
+                        args={{direction: 'minus', target: id, prevValue: value}}
                         icon='minus'
                     />
                     <input
@@ -28,10 +26,8 @@ export default class NumberInput extends Component {
                         onChange={onChange}    
                     />
                     <NeutralButton 
-                        increment={increment}
-                        direction='plus'
-                        id={id}
-                        value={value}
+                        handleClick={increment}
+                        args={{direction: 'plus', target: id, prevValue: value}}
                         icon='plus'
                     />
                 </div>

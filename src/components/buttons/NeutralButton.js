@@ -4,11 +4,11 @@ import styles from './NeutralButton.module.css';
 
 export default class NeutralButton extends Component {
     render() {
-        const { increment, direction, id, value, icon } = this.props;
+        const { handleClick, args, icon } = this.props;
         return (
             <button
                 className={styles.neutralButton}
-                onClick={() => increment(direction, id, value)}>
+                onClick={() => handleClick(args)}>
                 <Icon 
                     name={icon}
                 />
