@@ -18,7 +18,7 @@ export default class TimeSettings extends Component {
     increment(direction, target, prevValue) {
         if (direction === 'minus') {
             this.props.updateTime(target, prevValue-1)
-        } else if (direction == 'plus') {
+        } else if (direction === 'plus') {
             this.props.updateTime(target, prevValue+1)
         }
     }

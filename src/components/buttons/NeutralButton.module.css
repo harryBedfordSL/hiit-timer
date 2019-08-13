@@ -1,0 +1,15 @@
+.neutralButton {
+    border-radius: 0.25em;
+    color: white;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-style: none;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+.neutralButton:hover {
+    background-color: rgb(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.neutralButton:active {
+    background-color: rgba(89, 138, 95, 0.1);
+}
