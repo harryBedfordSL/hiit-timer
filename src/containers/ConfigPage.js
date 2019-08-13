@@ -8,12 +8,51 @@ import { connect } from 'react-redux';
 import styles from './ConfigPage.module.css';
 
 import * as actions from '../actions/actions';
+import EditModal from '../components/EditModal';
 
 class ConfigPage extends Component {
-    render() {
-        const { isConfigValid } = this.props;
+    constructor(props) {
+        super(props);
+        this.state = {
+            showEditModal: false,
+        }
+        this.openEditModal = this.openEditModal.bind(this)
+        this.closeEditModal = this.closeEditModal.bind(this)
+    }
+
+    openEditModal = (exercise, index) => {
+        this.setState({
+            showEditModal: true,
+            exerciseToEdit: exercise,
+            numberInList: index
+        })
+    }
+
+    closeEditModal = () => {
+        this.setState({
+            showEditModal: false,
+        })
+    }
+
+    render = () => {
+        const { isConfigValid, removeExercise, editExercise } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.normalPage}>
+                {this.state.showEditModal && <div className={styles.backDrop} />}
+                <EditModal
+                    handleClose={this.closeEditModal}
+                    show={this.state.showEditModal}
+                    exerciseToEdit={this.state.exerciseToEdit}
+                    numberInList={this.state.numberInList} 
+                    deleteExercise={() => {
+                        removeExercise(this.state.numberInList)
+                        this.setState({showEditModal: false})
+                    }}
+                    save={(updatedExercise) => {
+                        editExercise(this.state.exerciseToEdit, updatedExercise)
+                        this.setState({showEditModal: false})
+                    }}
+                />
                 <header className={styles.title}>
                     HIIT Timer
                 </header>
@@ -21,6 +60,7 @@ class ConfigPage extends Component {
                     <Exercises
                         exercises={this.props.exercises}
                         addExercise={this.props.addExercise}
+                        openEditModal={this.openEditModal}
                     />
                     <TimeSettings
                         workTime={this.props.workTime}
@@ -28,7 +68,10 @@ class ConfigPage extends Component {
                         updateTime={this.props.updateTime}
                     />
                     <Link to="/running" className={isConfigValid ? styles.validLink : styles.invalidLink} >
-                        <PositiveButton icon={'angle right'} />
+                        <PositiveButton
+                            icon={'angle right'}
+                            size='small'
+                        />
                     </Link>
                 </div>
             </div>

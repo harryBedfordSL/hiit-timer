@@ -11,17 +11,17 @@ export default class Exercises extends Component {
         this.submitForm = this.submitForm.bind(this)
     }
 
-    onChange(event) {
+    onChange = (event) => {
         this.setState({inputText: event.target.value})
     }
 
-    submitForm(event) {
+    submitForm = (event) => {
         event.preventDefault()
         this.props.addExercise(this.state.inputText)
         this.setState({inputText: ""})
     }
 
-    render () {
+    render = () => {
         return (
             <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>
@@ -36,7 +36,13 @@ export default class Exercises extends Component {
                 <div className={styles.exerciseContainer}>
                     {this.props && this.props.exercises.map((el, index) => {
                         return (
-                            <span className={styles.exercise} key={index}>{index+1} - {el}</span>
+                            <span
+                                key={index}
+                                className={styles.exercise}
+                                onClick={() => this.props.openEditModal(el, index+1)}
+                            >
+                                {index+1} - {el}
+                            </span>
                         )
                     })}
                 </div>

@@ -3,8 +3,8 @@ import styles from './PositiveButton.module.css';
 import { Icon } from 'semantic-ui-react';
 
 export default class PositiveButton extends Component {    
-    render() {
-        const { disabled, onClick, icon } = this.props;
+    render = () => {
+        const { disabled, onClick, icon, size } = this.props;
         return (
             <button
                 disabled={disabled}
@@ -14,7 +14,7 @@ export default class PositiveButton extends Component {
                 <Icon
                     className={styles.icon}
                     name={icon}
-                    size='small'
+                    size={size}
                 />
             </button>
         )

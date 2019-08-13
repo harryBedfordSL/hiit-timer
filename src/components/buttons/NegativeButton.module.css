@@ -4,15 +4,15 @@
     background-color: rgba(138, 89, 89, 0.719);
     border-radius: 10px;
     border-style: none;
-    height: 10vh;
+    height: fit-content;
     width: fit-content;
+    padding: 1vh;
     letter-spacing: 0.2vw;
     font-size: 10vh;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .negBtn:hover {
-    background-color: rgba(138, 89, 89, 0.473);
     cursor: pointer;
 }
 

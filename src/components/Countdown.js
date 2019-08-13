@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './Countdown.module.css';
 
 export default class Countdown extends Component {
-    render() {
+    render = () => {
         const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer } = this.props;
         return (
             <div className={styles.page}>
@@ -28,9 +28,14 @@ export default class Countdown extends Component {
                         className={styles.btn}
                         icon={startPauseIcon}
                         onClick={startOrPause}
+                        size='small'
                     />
                     <Link to="/" className={styles.btn}>
-                        <NegativeButton icon={'stop'} onClick={stopTimer} />
+                        <NegativeButton
+                            icon={'stop'}
+                            onClick={stopTimer}
+                            size='small'
+                        />
                     </Link>
                 </div>
             </div>

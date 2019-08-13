@@ -1,0 +1,65 @@
+.showModal {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    background: rgba(148, 148, 148, 0.95);
+    border-style: none;
+    width: 75vw;
+    height: 50vh;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hideModal {
+    opacity: 0;
+    display: none;
+}
+
+.toolBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh;
+}
+
+.numberInList{
+    margin-left: 4vw;
+}
+
+.modalBody {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.exerciseName {
+    height: 10vh;
+    text-align: center;
+    font-size: 3em;
+    line-height: 0.75em;
+}
+
+.options {
+    width: 75vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.editInput {
+    font-family: 'Raleway';
+    height: 10vh;
+    text-align: center;
+    font-size: 3em;
+    line-height: 0.75em;
+    display: flex;
+    width: 85%;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}

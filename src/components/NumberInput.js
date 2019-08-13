@@ -3,7 +3,7 @@ import styles from './NumberInput.module.css';
 import NeutralButton from './buttons/NeutralButton';
 
 export default class NumberInput extends Component {
-    render() {
+    render = () => {
         const { inputTitle, increment, id, value, min, max, onChange} = this.props;
         return (
             <div>

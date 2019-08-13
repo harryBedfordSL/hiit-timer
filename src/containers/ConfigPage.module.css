@@ -1,4 +1,4 @@
-.page {
+.normalPage {
     background-color: #282c34;
     min-height: 100vh;
     font-size: calc(10px + 3vmin);
@@ -6,6 +6,13 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.backDrop {
+    background-color: rgba(0, 0, 0, 0.678);
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .title {
