@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     config: {
         exercises: [],
         workTime: 30,
-        restTime: 30
+        restTime: 30,
+        sets: 1
     },
     isConfigValid: false,
     isExerciseInputValid: false
@@ -28,7 +29,7 @@ export default (state = INITIAL_STATE, action) => {
                     ...state.config,
                     exercises: action.exercises
                 }
-            }
+            };
 
         case types.UPDATE_WORK_TIME:
             return {
@@ -48,17 +49,26 @@ export default (state = INITIAL_STATE, action) => {
                 }
             };
 
+        case types.UPDATE_SETS:
+            return {
+                ...state,
+                config: {
+                    ...state.config,
+                    sets: action.sets
+                }
+            };
+
         case types.IS_CONFIG_VALID:
             return {
                 ...state,
                 isConfigValid: action.isValid
-            }
+            };
         
         case types.IS_EXERCISE_INPUT_VALID:
             return {
                 ...state,
                 isExerciseInputValid: action.isValid
-            }
+            };
 
         default:
              return state;
