@@ -6,7 +6,8 @@ const INITIAL_STATE = {
         workTime: 30,
         restTime: 30
     },
-    isConfigValid: false
+    isConfigValid: false,
+    isExerciseInputValid: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -51,6 +52,12 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isConfigValid: action.isValid
+            }
+        
+        case types.IS_EXERCISE_INPUT_VALID:
+            return {
+                ...state,
+                isExerciseInputValid: action.isValid
             }
 
         default:

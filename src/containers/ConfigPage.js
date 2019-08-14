@@ -61,6 +61,8 @@ class ConfigPage extends Component {
                         exercises={this.props.exercises}
                         addExercise={this.props.addExercise}
                         openEditModal={this.openEditModal}
+                        validateExerciseInput={this.props.validateExerciseInput}
+                        isExerciseInputValid={this.props.isExerciseInputValid}
                     />
                     <TimeSettings
                         workTime={this.props.workTime}
@@ -83,7 +85,8 @@ const mapStateToProps = state => ({
     exercises: state.config.exercises,
     workTime: state.config.workTime,
     restTime: state.config.restTime,
-    isConfigValid: state.isConfigValid
+    isConfigValid: state.isConfigValid,
+    isExerciseInputValid: state.isExerciseInputValid
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

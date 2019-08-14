@@ -8,7 +8,7 @@ export default class PositiveButton extends Component {
         return (
             <button
                 disabled={disabled}
-                className={styles.posBtn}
+                className={disabled ? styles.disabledBtn : styles.posBtn}
                 onClick={onClick}
             >
                 <Icon

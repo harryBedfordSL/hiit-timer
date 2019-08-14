@@ -10,9 +10,9 @@ const updatingTime = (key, time) => ({
     time
 })
 
-const updatingValidConfig = isValid => ({
-    type: types.IS_CONFIG_VALID,
-    isValid
+const updateingValidState = (setting, isValid) => ({
+        type: setting,
+        isValid
 })
 
 const updatingExercises = exercises => ({
@@ -24,7 +24,8 @@ export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
     const isConfigValid = validateConfig(filteredConfig);
     const isInputValid = validateInput(exercise);
-    dispatch(updatingValidConfig(isConfigValid && isInputValid))
+    dispatch(updateingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
+    dispatch(updateingValidState(types.IS_EXERCISE_INPUT_VALID, false))
     dispatch(addingExercise(exercise))
 }
 
@@ -39,7 +40,7 @@ export const removeExercise = numberInList => (dispatch, getState) => {
     const indexInExercises = numberInList - 1;
     const newExercises = getState().config.exercises.filter((_, i) => indexInExercises !== i);
     const isInputValid = validateInput(newExercises);
-    dispatch(updatingValidConfig(isInputValid))
+    dispatch(updateingValidState(types.IS_CONFIG_VALID, isInputValid))
     dispatch(updatingExercises(newExercises))
 }
 
@@ -50,8 +51,13 @@ export const updateTime = (actionType, time) => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, key)
     const isVonfigValid = validateConfig(filteredConfig);
     const isInputValid = validateInput(time);
-    dispatch(updatingValidConfig(isVonfigValid && isInputValid))
+    dispatch(updateingValidState(types.IS_CONFIG_VALID, isVonfigValid && isInputValid))
     dispatch(updatingTime(actionType, time))
+}
+
+export const validateExerciseInput = input => dispatch => {
+    const isInputValid = validateInput(input)
+    dispatch(updateingValidState(types.IS_EXERCISE_INPUT_VALID, isInputValid))
 }
 
 const validateConfig = filteredConfig => {

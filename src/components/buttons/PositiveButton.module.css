@@ -18,3 +18,13 @@
 .icon {
     margin: auto !important;
 }
+
+.disabledBtn {
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(89, 138, 95, 0.719);
+    border-style: none;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 1vh;
+    opacity: 0.25;
+}

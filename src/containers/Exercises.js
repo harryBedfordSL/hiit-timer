@@ -14,6 +14,7 @@ export default class Exercises extends Component {
 
     onChange = (event) => {
         this.setState({inputText: event.target.value})
+        this.props.validateExerciseInput(event.target.value);
     }
 
     submitForm = (event) => {
@@ -34,7 +35,7 @@ export default class Exercises extends Component {
                             value={this.state.inputText}
                             onChange={this.onChange}
                         />
-                        <PositiveButton icon='plus' />
+                        <PositiveButton icon='plus' disabled={!this.props.isExerciseInputValid} />
                     </div>
                 </form>
                 <div className={styles.exerciseContainer}>
