@@ -15,7 +15,8 @@ class RunningPage extends Component {
             startPauseIcon: 'play',
             exerciseNumber: 0,
             resting: false,
-            secondsLeft: this.props.workTime
+            secondsLeft: this.props.workTime,
+            currentSet: 1
         }
         this.startOrPause = this.startOrPause.bind(this)
         this.tick = this.tick.bind(this)
@@ -43,8 +44,8 @@ class RunningPage extends Component {
     }
 
     tick = () => {
-        const { secondsLeft, resting, exerciseNumber } = this.state;
-        const { restTime, workTime, exercises } = this.props;
+        const { secondsLeft, resting, exerciseNumber, currentSet } = this.state;
+        const { restTime, workTime, exercises, sets } = this.props;
         if (secondsLeft > 0) {this.setState({secondsLeft: secondsLeft - 1})}
         else {
             this.stopTimer();
@@ -54,17 +55,30 @@ class RunningPage extends Component {
                 secondsLeft: resting ? workTime : restTime,
                 resting: !resting
             });
-            const isAnotherExercise = exercises[exerciseNumber] && (newExerciseNumber !== exercises.length-1 || resting);
+            const isAnotherExercise = (newExerciseNumber !== exercises.length-1 || resting);
             if (isAnotherExercise) {
                 this.startTimer();
             } else {
-                this.setState({finished: true})
+                this.stopTimer();
+                const isAnotherSet = currentSet < sets;
+                if (isAnotherSet) {
+                    const newSetNumber = currentSet + 1;
+                    this.setState({
+                        exerciseNumber: -1,
+                        currentSet: newSetNumber,
+                        secondsLeft: 2*restTime,
+                        resting: true
+                    });
+                    this.startTimer();
+                } else {
+                    this.setState({finished: true})
+                }
             }
         }
     }
 
     render = () => {
-        const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished } = this.state;
+        const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
         return (
             <div>
                 {finished
@@ -77,6 +91,8 @@ class RunningPage extends Component {
                         startPauseIcon={startPauseIcon}
                         startOrPause={this.startOrPause}
                         stopTimer={this.stopTimer}
+                        sets={this.props.sets}
+                        currentSet={currentSet}
                     />
                 }
             </div>
@@ -87,7 +103,8 @@ class RunningPage extends Component {
 const mapStateToProps = state => ({
     exercises: state.config.exercises,
     workTime: state.config.workTime,
-    restTime: state.config.restTime
+    restTime: state.config.restTime,
+    sets: state.config.sets
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

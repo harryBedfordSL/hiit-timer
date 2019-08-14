@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import EditModal from '../components/EditModal';
 import NeutralButton from '../components/buttons/NeutralButton';
 import styles from './ConfigPage.module.css';
+import NumberInput from '../components/NumberInput';
+import actionTypes from '../actions/types';
 
 import * as actions from '../actions/actions';
 
@@ -17,8 +19,10 @@ class ConfigPage extends Component {
         this.state = {
             showEditModal: false,
         }
-        this.openEditModal = this.openEditModal.bind(this)
-        this.closeEditModal = this.closeEditModal.bind(this)
+        this.openEditModal = this.openEditModal.bind(this);
+        this.closeEditModal = this.closeEditModal.bind(this);
+        this.increment = this.increment.bind(this);
+        this.updateTarget = this.updateTarget.bind(this);
     }
 
     openEditModal = (exercise, index) => {
@@ -33,6 +37,21 @@ class ConfigPage extends Component {
         this.setState({
             showEditModal: false,
         })
+    }
+
+    increment = args => {
+        const { direction, target, prevValue, action } = args;
+        if (direction === 'minus') {
+            action(target, prevValue - 1);
+        } else if (direction === 'plus') {
+            action(target, prevValue + 1);
+        }
+    }
+
+    updateTarget = (event, action) => {
+        const target = event.target.id;
+        const value = parseInt(event.target.value);
+        action(target, value);
     }
 
     render = () => {
@@ -54,9 +73,6 @@ class ConfigPage extends Component {
                         this.setState({showEditModal: false})
                     }}
                 />
-                <header className={styles.title}>
-                    HIIT Timer
-                </header>
                 <div className={styles.content}>
                     <Exercises
                         exercises={this.props.exercises}
@@ -68,7 +84,19 @@ class ConfigPage extends Component {
                     <TimeSettings
                         workTime={this.props.workTime}
                         restTime={this.props.restTime}
-                        updateTime={this.props.updateTime}
+                        increment={this.increment}
+                        onChange={this.updateTarget}
+                        action={this.props.updateTime}
+                    />
+                    <NumberInput 
+                        inputTitle='Sets:'
+                        increment={this.increment}
+                        id={actionTypes.UPDATE_SETS}
+                        value={this.props.sets}
+                        min={1}
+                        max={10}
+                        onChange={this.updateTarget}
+                        action={this.props.updateSets}
                     />
                     <div className={styles.navigation}>
                         <Link to="/welcome">
@@ -95,6 +123,7 @@ const mapStateToProps = state => ({
     exercises: state.config.exercises,
     workTime: state.config.workTime,
     restTime: state.config.restTime,
+    sets: state.config.sets,
     isConfigValid: state.isConfigValid,
     isExerciseInputValid: state.isExerciseInputValid
 });
