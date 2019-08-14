@@ -20,6 +20,19 @@ const updatingExercises = exercises => ({
     exercises
 })
 
+const updatingSets = sets => ({
+    type: types.UPDATE_SETS,
+    sets
+})
+
+export const updateSets = (actionType, sets) => (dispatch, getState) => {
+    const filteredConfig = filterState(getState().config, 'sets');
+    const isConfigValid = validateConfig(filteredConfig);
+    const isInputValid = validateInput(sets); 
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
+    dispatch(updatingSets(sets))
+}
+
 export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
     const isConfigValid = validateConfig(filteredConfig);
@@ -49,9 +62,9 @@ export const updateTime = (actionType, time) => (dispatch, getState) => {
         ? 'workTime'
         : 'restTime'
     const filteredConfig = filterState(getState().config, key)
-    const isVonfigValid = validateConfig(filteredConfig);
+    const isConfigValid = validateConfig(filteredConfig);
     const isInputValid = validateInput(time);
-    dispatch(updatingValidState(types.IS_CONFIG_VALID, isVonfigValid && isInputValid))
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
     dispatch(updatingTime(actionType, time))
 }
 
@@ -63,12 +76,15 @@ export const validateExerciseInput = input => dispatch => {
 const validateConfig = filteredConfig => {
     return Object.keys(filteredConfig)
         .reduce((acc, currKey) => {
+            if (filteredConfig[currKey].length === 0 || !filteredConfig[currKey]) acc = false
             if (filteredConfig[currKey].length === 0) acc = false
             return acc
         }, true);
 }
 
 const validateInput = input => {
+    if (!input) return false 
+
     return input.length !== 0;
 }
 

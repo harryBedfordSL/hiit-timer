@@ -6,7 +6,7 @@ import styles from './Countdown.module.css';
 
 export default class Countdown extends Component {
     render = () => {
-        const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer } = this.props;
+        const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer, sets, currentSet } = this.props;
         return (
             <div className={styles.page}>
                 <div>
@@ -22,6 +22,9 @@ export default class Countdown extends Component {
                 </div>
                 <div className={styles.timer}>
                     {secondsLeft}
+                </div>
+                <div>
+                    Set: {currentSet} / {sets}
                 </div>
                 <div className={styles.interactionBar}>
                     <PositiveButton
