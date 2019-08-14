@@ -22,7 +22,9 @@ const updatingExercises = exercises => ({
 
 export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
-    dispatch(validateConfig(filteredConfig, exercise))
+    const isConfigValid = validateConfig(filteredConfig);
+    const isInputValid = validateInput(exercise);
+    dispatch(updatingValidConfig(isConfigValid && isInputValid))
     dispatch(addingExercise(exercise))
 }
 
@@ -36,6 +38,8 @@ export const editExercise = (prevExercise, newExercise) => (dispatch, getState) 
 export const removeExercise = numberInList => (dispatch, getState) => {
     const indexInExercises = numberInList - 1;
     const newExercises = getState().config.exercises.filter((_, i) => indexInExercises !== i);
+    const isInputValid = validateInput(newExercises);
+    dispatch(updatingValidConfig(isInputValid))
     dispatch(updatingExercises(newExercises))
 }
 
@@ -44,20 +48,22 @@ export const updateTime = (actionType, time) => (dispatch, getState) => {
         ? 'workTime'
         : 'restTime'
     const filteredConfig = filterState(getState().config, key)
-    dispatch(validateConfig(filteredConfig, time))
+    const isVonfigValid = validateConfig(filteredConfig);
+    const isInputValid = validateInput(time);
+    dispatch(updatingValidConfig(isVonfigValid && isInputValid))
     dispatch(updatingTime(actionType, time))
 }
 
-const validateConfig = (filteredConfig, input) => {
-    let isValid = Object.keys(filteredConfig)
+const validateConfig = filteredConfig => {
+    return Object.keys(filteredConfig)
         .reduce((acc, currKey) => {
             if (filteredConfig[currKey].length === 0) acc = false
             return acc
         }, true);
+}
 
-    if (input.length === 0) isValid = false;
-
-    return updatingValidConfig(isValid) 
+const validateInput = input => {
+    return input.length !== 0;
 }
 
 const filterState = (config, keyToRemove) => {
