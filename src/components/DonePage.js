@@ -10,8 +10,11 @@ export default class DonePage extends Component {
                 <div className={styles.title}>
                     Done
                 </div>
-                <Link to="/" className={styles.btn}>
-                    <PositiveButton icon={'repeat'} />
+                <Link to="/config" className={styles.btn}>
+                    <PositiveButton
+                        icon='repeat'
+                        size='big'    
+                    />
                 </Link>
             </div>
         )
