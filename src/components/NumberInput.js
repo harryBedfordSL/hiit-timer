@@ -11,7 +11,8 @@ export default class NumberInput extends Component {
                     {inputTitle}
                 </div>
                 <div className={styles.interactiveSection}>
-                    <NeutralButton 
+                    <NeutralButton
+                        disabled={value <= min} 
                         handleClick={increment}
                         args={{direction: 'minus', target: id, prevValue: value, action}}
                         icon='minus'
@@ -25,7 +26,8 @@ export default class NumberInput extends Component {
                         value={value}
                         onChange={(evt) => onChange(evt, action)}    
                     />
-                    <NeutralButton 
+                    <NeutralButton
+                        disabled={value >= max}
                         handleClick={increment}
                         args={{direction: 'plus', target: id, prevValue: value, action}}
                         icon='plus'
