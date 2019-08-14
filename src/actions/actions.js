@@ -10,7 +10,7 @@ const updatingTime = (key, time) => ({
     time
 })
 
-const updateingValidState = (setting, isValid) => ({
+const updatingValidState = (setting, isValid) => ({
         type: setting,
         isValid
 })
@@ -24,8 +24,8 @@ export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
     const isConfigValid = validateConfig(filteredConfig);
     const isInputValid = validateInput(exercise);
-    dispatch(updateingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
-    dispatch(updateingValidState(types.IS_EXERCISE_INPUT_VALID, false))
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
+    dispatch(updatingValidState(types.IS_EXERCISE_INPUT_VALID, false))
     dispatch(addingExercise(exercise))
 }
 
@@ -40,7 +40,7 @@ export const removeExercise = numberInList => (dispatch, getState) => {
     const indexInExercises = numberInList - 1;
     const newExercises = getState().config.exercises.filter((_, i) => indexInExercises !== i);
     const isInputValid = validateInput(newExercises);
-    dispatch(updateingValidState(types.IS_CONFIG_VALID, isInputValid))
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isInputValid))
     dispatch(updatingExercises(newExercises))
 }
 
@@ -51,13 +51,13 @@ export const updateTime = (actionType, time) => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, key)
     const isVonfigValid = validateConfig(filteredConfig);
     const isInputValid = validateInput(time);
-    dispatch(updateingValidState(types.IS_CONFIG_VALID, isVonfigValid && isInputValid))
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isVonfigValid && isInputValid))
     dispatch(updatingTime(actionType, time))
 }
 
 export const validateExerciseInput = input => dispatch => {
     const isInputValid = validateInput(input)
-    dispatch(updateingValidState(types.IS_EXERCISE_INPUT_VALID, isInputValid))
+    dispatch(updatingValidState(types.IS_EXERCISE_INPUT_VALID, isInputValid))
 }
 
 const validateConfig = filteredConfig => {
