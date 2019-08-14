@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Exercises.module.css';
+import PositiveButton from '../components/buttons/PositiveButton';
 
 export default class Exercises extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export default class Exercises extends Component {
 
     onChange = (event) => {
         this.setState({inputText: event.target.value})
+        this.props.validateExerciseInput(event.target.value);
     }
 
     submitForm = (event) => {
@@ -25,13 +27,16 @@ export default class Exercises extends Component {
         return (
             <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>
-                    Add Exercise: <br/>
-                    <input 
-                        className={styles.input} 
-                        type="text" 
-                        value={this.state.inputText}
-                        onChange={this.onChange}
-                    />
+                    Add Exercise:
+                    <div className={styles.interactionBar}>
+                        <input 
+                            className={styles.input} 
+                            type="text" 
+                            value={this.state.inputText}
+                            onChange={this.onChange}
+                        />
+                        <PositiveButton icon='plus' disabled={!this.props.isExerciseInputValid} />
+                    </div>
                 </form>
                 <div className={styles.exerciseContainer}>
                     {this.props && this.props.exercises.map((el, index) => {

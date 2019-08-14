@@ -1,12 +1,19 @@
 .input {
     font-family: 'Raleway';
     padding: 1vh;
-    width: 85vw;
+    width: 80%;
     text-align: center;
     border-radius: 5px;
     border-style: none;
-    margin: 1vh 0 1vh 0;
+    margin: 1vh 2vh 1vh 0;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.interactionBar {
+    width: 85vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .exercise {

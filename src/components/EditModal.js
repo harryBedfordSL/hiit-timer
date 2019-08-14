@@ -13,14 +13,18 @@ export default class EditModal extends Component {
     }
 
     enableEditMode = (exerciseToEdit) => {
+        const isInputValid = exerciseToEdit.length !== 0; 
         this.setState({
             editing: true,
-            editedExercise: exerciseToEdit
+            editedExercise: exerciseToEdit,
+            disableSave: !isInputValid
         })
     }
 
     onChange = (event) => {
-        this.setState({editedExercise: event.target.value})
+        const input = event.target.value;
+        const isInputValid = input.length !== 0; 
+        this.setState({editedExercise: input, disableSave: !isInputValid});
     }
     
     render = () => {
@@ -35,7 +39,7 @@ export default class EditModal extends Component {
                         this.setState({editing: false})
                     }}
                     icon='close'
-                    size='mini'
+                    size='small'
                 />
             </div>
             <div className={styles.modalBody}>
@@ -56,19 +60,21 @@ export default class EditModal extends Component {
                             this.setState({editing: false})
                         }}
                         icon='trash'
-                        size='mini'/>
+                        size='big'/>
                     {this.state.editing
                         ? <PositiveButton
-                        onClick={() => {
-                            save(this.state.editedExercise)
-                            this.setState({editing: false})
-                        }}
-                        icon='save'
-                        size='mini' />
+                            onClick={() => {
+                                save(this.state.editedExercise)
+                                this.setState({editing: false})
+                            }}
+                            icon='save'
+                            size='big'
+                            disabled={this.state.disableSave} 
+                        />
                         : <PositiveButton
                             onClick={() => this.enableEditMode(exerciseToEdit)}
                             icon='edit'
-                            size='mini' />
+                            size='big' />
                     }
                 </div>
             </div>

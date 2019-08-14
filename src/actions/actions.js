@@ -10,9 +10,9 @@ const updatingTime = (key, time) => ({
     time
 })
 
-const updatingValidConfig = isValid => ({
-    type: types.IS_CONFIG_VALID,
-    isValid
+const updatingValidState = (setting, isValid) => ({
+        type: setting,
+        isValid
 })
 
 const updatingExercises = exercises => ({
@@ -22,7 +22,10 @@ const updatingExercises = exercises => ({
 
 export const addExercise = exercise => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'exercises')
-    dispatch(validateConfig(filteredConfig, exercise))
+    const isConfigValid = validateConfig(filteredConfig);
+    const isInputValid = validateInput(exercise);
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isConfigValid && isInputValid))
+    dispatch(updatingValidState(types.IS_EXERCISE_INPUT_VALID, false))
     dispatch(addingExercise(exercise))
 }
 
@@ -36,6 +39,8 @@ export const editExercise = (prevExercise, newExercise) => (dispatch, getState) 
 export const removeExercise = numberInList => (dispatch, getState) => {
     const indexInExercises = numberInList - 1;
     const newExercises = getState().config.exercises.filter((_, i) => indexInExercises !== i);
+    const isInputValid = validateInput(newExercises);
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isInputValid))
     dispatch(updatingExercises(newExercises))
 }
 
@@ -44,20 +49,27 @@ export const updateTime = (actionType, time) => (dispatch, getState) => {
         ? 'workTime'
         : 'restTime'
     const filteredConfig = filterState(getState().config, key)
-    dispatch(validateConfig(filteredConfig, time))
+    const isVonfigValid = validateConfig(filteredConfig);
+    const isInputValid = validateInput(time);
+    dispatch(updatingValidState(types.IS_CONFIG_VALID, isVonfigValid && isInputValid))
     dispatch(updatingTime(actionType, time))
 }
 
-const validateConfig = (filteredConfig, input) => {
-    let isValid = Object.keys(filteredConfig)
+export const validateExerciseInput = input => dispatch => {
+    const isInputValid = validateInput(input)
+    dispatch(updatingValidState(types.IS_EXERCISE_INPUT_VALID, isInputValid))
+}
+
+const validateConfig = filteredConfig => {
+    return Object.keys(filteredConfig)
         .reduce((acc, currKey) => {
             if (filteredConfig[currKey].length === 0) acc = false
             return acc
         }, true);
+}
 
-    if (input.length === 0) isValid = false;
-
-    return updatingValidConfig(isValid) 
+const validateInput = input => {
+    return input.length !== 0;
 }
 
 const filterState = (config, keyToRemove) => {
