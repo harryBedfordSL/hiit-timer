@@ -28,13 +28,13 @@ export default class Countdown extends Component {
                         className={styles.btn}
                         icon={startPauseIcon}
                         onClick={startOrPause}
-                        size='small'
+                        size='big'
                     />
                     <Link to="/" className={styles.btn}>
                         <NegativeButton
                             icon={'stop'}
                             onClick={stopTimer}
-                            size='small'
+                            size='big'
                         />
                     </Link>
                 </div>

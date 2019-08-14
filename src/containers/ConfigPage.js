@@ -70,7 +70,7 @@ class ConfigPage extends Component {
                     <Link to="/running" className={isConfigValid ? styles.validLink : styles.invalidLink} >
                         <PositiveButton
                             icon={'angle right'}
-                            size='small'
+                            size='big'
                         />
                     </Link>
                 </div>
