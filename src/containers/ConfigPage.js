@@ -5,10 +5,11 @@ import TimeSettings from './TimeSettings';
 import Exercises from './Exercises';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import EditModal from '../components/EditModal';
+import NeutralButton from '../components/buttons/NeutralButton';
 import styles from './ConfigPage.module.css';
 
 import * as actions from '../actions/actions';
-import EditModal from '../components/EditModal';
 
 class ConfigPage extends Component {
     constructor(props) {
@@ -69,12 +70,21 @@ class ConfigPage extends Component {
                         restTime={this.props.restTime}
                         updateTime={this.props.updateTime}
                     />
-                    <Link to="/running" className={isConfigValid ? styles.validLink : styles.invalidLink} >
-                        <PositiveButton
-                            icon={'angle right'}
-                            size='big'
-                        />
-                    </Link>
+                    <div className={styles.navigation}>
+                        <Link to="/welcome">
+                            <NeutralButton
+                                icon={'angle left'}
+                                size='big'
+                                handleClick={()=>{}}
+                            />
+                        </Link>
+                        <Link to="/running" className={isConfigValid ? styles.validLink : styles.invalidLink} >
+                            <PositiveButton
+                                icon={'angle right'}
+                                size='big'
+                            />
+                        </Link>
+                    </div>
                 </div>
             </div>
         );

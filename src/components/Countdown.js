@@ -30,7 +30,7 @@ export default class Countdown extends Component {
                         onClick={startOrPause}
                         size='big'
                     />
-                    <Link to="/" className={styles.btn}>
+                    <Link to="/config" className={styles.btn}>
                         <NegativeButton
                             icon={'stop'}
                             onClick={stopTimer}
