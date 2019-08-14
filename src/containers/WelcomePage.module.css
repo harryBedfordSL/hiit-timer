@@ -1,0 +1,18 @@
+.page {
+    background-color: #282c34;
+    min-height: 100vh;
+    font-size: calc(10px + 3vmin);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.title {
+    font-size: 3em;
+}
+
+.body {
+    font-size: 2em;
+}
