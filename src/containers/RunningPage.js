@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import DonePage from '../components/DonePage';
 import Countdown from '../components/Countdown';
+import shortBeep from '../assets/shortAlert.mp3';
+import longBeep from '../assets/longAlert.mp3';
 
 import * as actions from '../actions/actions';
 
@@ -22,6 +24,9 @@ class RunningPage extends Component {
         this.tick = this.tick.bind(this)
         this.stopTimer = this.stopTimer.bind(this)
         this.startTimer = this.startTimer.bind(this)
+
+        this.shortBeep = new Audio(shortBeep);
+        this.longBeep = new Audio(longBeep);
     }
 
     startOrPause = () => {
@@ -46,8 +51,15 @@ class RunningPage extends Component {
     tick = () => {
         const { secondsLeft, resting, exerciseNumber, currentSet } = this.state;
         const { restTime, workTime, exercises, sets } = this.props;
-        if (secondsLeft > 0) {this.setState({secondsLeft: secondsLeft - 1})}
+        if (secondsLeft > 4) {
+            this.setState({secondsLeft: secondsLeft - 1})
+        }
+        else if (1 < secondsLeft && secondsLeft <= 4) {
+            this.setState({secondsLeft: secondsLeft - 1})
+            this.shortBeep.play();
+        }
         else {
+            this.longBeep.play();
             this.stopTimer();
             const newExerciseNumber = resting ? exerciseNumber + 1 : exerciseNumber;
             this.setState({
