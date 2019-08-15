@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import DonePage from '../components/DonePage';
+import { Redirect } from 'react-router-dom';
 import Countdown from '../components/Countdown';
 import shortBeep from '../assets/shortAlert.mp3';
 import longBeep from '../assets/longAlert.mp3';
@@ -93,8 +93,9 @@ class RunningPage extends Component {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
         return (
             <div>
+                {!this.props.isConfigValid && <Redirect to='/config' />}
                 {finished
-                    ? <DonePage />
+                    ? <Redirect to='/done' />
                     : <Countdown 
                         resting={resting}
                         currentExercise={this.props.exercises[exerciseNumber]}
@@ -116,7 +117,8 @@ const mapStateToProps = state => ({
     exercises: state.config.exercises,
     workTime: state.config.workTime,
     restTime: state.config.restTime,
-    sets: state.config.sets
+    sets: state.config.sets,
+    isConfigValid: state.isConfigValid
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
