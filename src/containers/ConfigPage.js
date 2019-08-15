@@ -81,23 +81,25 @@ class ConfigPage extends Component {
                         validateExerciseInput={this.props.validateExerciseInput}
                         isExerciseInputValid={this.props.isExerciseInputValid}
                     />
-                    <TimeSettings
-                        workTime={this.props.workTime}
-                        restTime={this.props.restTime}
-                        increment={this.increment}
-                        onChange={this.updateTarget}
-                        action={this.props.updateTime}
-                    />
-                    <NumberInput 
-                        inputTitle='Sets:'
-                        increment={this.increment}
-                        id={actionTypes.UPDATE_SETS}
-                        value={this.props.sets}
-                        min={1}
-                        max={10}
-                        onChange={this.updateTarget}
-                        action={this.props.updateSets}
-                    />
+                    <div>
+                        <TimeSettings
+                            workTime={this.props.workTime}
+                            restTime={this.props.restTime}
+                            increment={this.increment}
+                            onChange={this.updateTarget}
+                            action={this.props.updateTime}
+                        />
+                        <NumberInput 
+                            inputTitle='Sets:'
+                            increment={this.increment}
+                            id={actionTypes.UPDATE_SETS}
+                            value={this.props.sets}
+                            min={1}
+                            max={10}
+                            onChange={this.updateTarget}
+                            action={this.props.updateSets}
+                        />
+                    </div>
                     <div className={styles.navigation}>
                         <Link to="/welcome">
                             <NeutralButton
