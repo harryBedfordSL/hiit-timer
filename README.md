@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The application is currently live and available at: 
 
-<p style='text-align: center'>
+<p align='center'>
     <a href='https://hiit-timer.herokuapp.com/' style='text-align: center'>
         https://hiit-timer.herokuapp.com/
     </a>
