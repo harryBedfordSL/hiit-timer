@@ -1,0 +1,45 @@
+.showModal {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    background: rgba(70, 70, 70, 0.95);
+    border-style: none;
+    width: 80vw;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hideModal {
+    opacity: 0;
+    display: none;
+}
+
+.title {
+    font-size: 2em;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1vh;
+}
+
+.modalBody {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.theme {
+    width: 75vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

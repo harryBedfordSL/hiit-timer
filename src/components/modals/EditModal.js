@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './EditModal.module.css';
-import PositiveButton from './buttons/PositiveButton';
-import NegativeButton from './buttons/NegativeButton';
+import PositiveButton from '../buttons/PositiveButton';
+import NegativeButton from '../buttons/NegativeButton';
 
 export default class EditModal extends Component {
     constructor(props) {

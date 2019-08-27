@@ -55,6 +55,7 @@
 }
 
 .editInput {
+    margin: auto;
     font-family: 'Raleway';
     height: 10vh;
     text-align: center;
