@@ -30,6 +30,7 @@ export default class WelcomePage extends Component {
     render() {
         return (
             <div className={styles.page}>
+                {this.state.showSettingsModal && <div className={styles.backdrop} />}
                 <SettingsModal
                     show={this.state.showSettingsModal}
                     handleClose={this.closeSettingsModal}
