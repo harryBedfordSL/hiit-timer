@@ -17,15 +17,18 @@ export default class NumberInput extends Component {
                         args={{direction: 'minus', target: id, prevValue: value, action}}
                         icon='minus'
                     />
-                    <input
-                        id={id}
-                        className={styles.input}
-                        type='number'
-                        min={min}
-                        max={max}
-                        value={value}
-                        onChange={(evt) => onChange(evt, action)}    
-                    />
+                    <div>
+                        <input
+                            id={id}
+                            className={styles.input}
+                            type='number'
+                            min={min}
+                            max={max}
+                            value={value}
+                            onChange={(evt) => onChange(evt, action)}    
+                        />
+                        <span className={styles.unit}>{this.props.unit}</span>
+                    </div>
                     <NeutralButton
                         disabled={value >= max}
                         handleClick={increment}
