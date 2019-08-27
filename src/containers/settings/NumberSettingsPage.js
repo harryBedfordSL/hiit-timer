@@ -33,6 +33,7 @@ class NumberSettingsPage extends Component {
         action(target, value);
     }
 
+    // TODO: refactor following two methods
     getValue = (currObj) => {
         if (currObj.title === 'Work') return this.props.workTime
         if (currObj.title === 'Rest') return this.props.restTime
