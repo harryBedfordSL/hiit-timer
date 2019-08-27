@@ -13,7 +13,7 @@ export default class WelcomePage extends Component {
                 <div className={styles.body}>
                     Welcome
                 </div>
-                <Link to="/config">
+                <Link to="/exercises">
                     <PositiveButton
                         icon={'angle right'}
                         size='big'

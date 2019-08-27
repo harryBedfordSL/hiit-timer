@@ -93,7 +93,7 @@ class RunningPage extends Component {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
         return (
             <div>
-                {!this.props.isConfigValid && <Redirect to='/config' />}
+                {!this.props.isConfigValid && <Redirect to='/welcome' />}
                 {finished
                     ? <Redirect to='/done' />
                     : <Countdown 
