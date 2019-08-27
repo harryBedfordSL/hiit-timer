@@ -27,7 +27,6 @@ export default class Exercises extends Component {
         return (
             <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>
-                    Add Exercise:
                     <div className={styles.interactionBar}>
                         <input 
                             className={styles.input} 
