@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import EditModal from '../../components/EditModal';
+import EditModal from '../../components/modals/EditModal';
 import Exercises from '../Exercises';
 import styles from './ExerciseSettingsPage.module.css';
 import NavigationBar from '../../components/NavigationBar';
