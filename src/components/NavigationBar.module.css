@@ -1,0 +1,15 @@
+.invalidLink {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.validLink {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.navigation {
+    width: 75vw;
+    display: flex;
+    justify-content: space-evenly;
+}
