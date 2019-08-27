@@ -39,16 +39,19 @@
 }
 
 .exerciseName {
-    height: 10vh;
-    text-align: center;
-    font-size: 3em;
-    line-height: 0.75em;
+        text-align: center;
+        font-size: 3em;
+        line-height: normal;
+        word-break: break-word;
+        overflow-y: auto;
+        margin: auto;
 }
 
 .options {
     width: 75vw;
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: auto;
 }
 
 .editInput {

@@ -7,7 +7,7 @@ export default function NeutralButton({ handleClick, args, icon, size, disabled 
         <button
             disabled={disabled}
             className={disabled ? styles.disabledBtn : styles.neutralButton}
-            onClick={() => handleClick(args)}>
+            onClick={() => handleClick && handleClick(args)}>
             <Icon
                 className={styles.icon}
                 name={icon}
