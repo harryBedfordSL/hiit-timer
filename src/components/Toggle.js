@@ -6,7 +6,7 @@ export default class Toggle extends Component {
     render() {
         const { isLightMode, handleChange, args, leftIcon, rightIcon } = this.props;
         return (
-            <div>
+            <div className={styles.toggle}>
                 <input
                     checked={isLightMode}
                     onChange={() => handleChange(args)}
