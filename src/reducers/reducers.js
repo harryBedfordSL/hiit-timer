@@ -1,15 +1,5 @@
 import types from '../actions/types';
-
-const INITIAL_STATE = {
-    config: {
-        exercises: [],
-        workTime: 30,
-        restTime: 30,
-        sets: 1
-    },
-    isConfigValid: false,
-    isExerciseInputValid: false
-}
+import { INITIAL_STATE } from '../utils/InitialState';
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
@@ -57,6 +47,12 @@ export default (state = INITIAL_STATE, action) => {
                     sets: action.sets
                 }
             };
+
+        case types.UPDATE_THEME:
+            return {
+                ...state,
+                theme: action.theme
+            }
 
         case types.IS_CONFIG_VALID:
             return {

@@ -5,6 +5,7 @@ export default {
     UPDATE_WORK_TIME: "update_work_time",
     UPDATE_REST_TIME: "update_rest_time",
     UPDATE_SETS: "update_sets",
+    UPDATE_THEME: "update_theme",
     IS_CONFIG_VALID: "is_config_valid",
     IS_EXERCISE_INPUT_VALID: "is_exercise_input_valid"
 };

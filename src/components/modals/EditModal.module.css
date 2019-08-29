@@ -6,12 +6,18 @@
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 1;
-    background: rgba(70, 70, 70, 0.95);
     border-style: none;
     width: 75vw;
     height: 50vh;
     border-radius: 10px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.8);
+    animation-name: modalFadeIn;
+    animation-duration: 0.5s;
+}
+
+@keyframes modalFadeIn {
+    from { transform: translate(-50%, -70%); opacity: 0; z-index: -1; }
+    to { transform: translate(-50%, -50%); opacity: 1; z-index: 100; }
 }
 
 .hideModal {
@@ -55,6 +61,7 @@
 }
 
 .editInput {
+    margin: auto;
     font-family: 'Raleway';
     height: 10vh;
     text-align: center;

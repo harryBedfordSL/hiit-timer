@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './EditModal.module.css';
-import PositiveButton from './buttons/PositiveButton';
-import NegativeButton from './buttons/NegativeButton';
+import PositiveButton from '../buttons/PositiveButton';
+import NegativeButton from '../buttons/NegativeButton';
 
 export default class EditModal extends Component {
     constructor(props) {
@@ -28,9 +28,9 @@ export default class EditModal extends Component {
     }
     
     render = () => {
-        const { handleClose, show, exerciseToEdit, numberInList, deleteExercise, save} = this.props;
+        const { handleClose, show, exerciseToEdit, numberInList, deleteExercise, save, theme} = this.props;
         return (
-        <div className={show ? styles.showModal : styles.hideModal}>
+        <div className={show ? styles.showModal : styles.hideModal} style={theme.modal}>
             <div className={styles.toolBar}>
                 <span className={styles.numberInList}>{numberInList}</span>
                 <NegativeButton

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Countdown from '../components/Countdown';
 import shortBeep from '../assets/shortAlert.mp3';
 import longBeep from '../assets/longAlert.mp3';
-
-import * as actions from '../actions/actions';
+import { withRedux } from '../utils/WithRedux';
 
 class RunningPage extends Component {
     constructor(props) {
@@ -91,6 +88,7 @@ class RunningPage extends Component {
 
     render = () => {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
+        const { theme } = this.props;
         return (
             <div>
                 {!this.props.isConfigValid && <Redirect to='/welcome' />}
@@ -106,6 +104,7 @@ class RunningPage extends Component {
                         stopTimer={this.stopTimer}
                         sets={this.props.sets}
                         currentSet={currentSet}
+                        theme={theme}
                     />
                 }
             </div>
@@ -113,14 +112,4 @@ class RunningPage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    exercises: state.config.exercises,
-    workTime: state.config.workTime,
-    restTime: state.config.restTime,
-    sets: state.config.sets,
-    isConfigValid: state.isConfigValid
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(RunningPage);
+export default withRedux(RunningPage);
