@@ -88,6 +88,7 @@ class RunningPage extends Component {
 
     render = () => {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
+        const { theme } = this.props;
         return (
             <div>
                 {!this.props.isConfigValid && <Redirect to='/welcome' />}
@@ -103,6 +104,7 @@ class RunningPage extends Component {
                         stopTimer={this.stopTimer}
                         sets={this.props.sets}
                         currentSet={currentSet}
+                        theme={theme}
                     />
                 }
             </div>

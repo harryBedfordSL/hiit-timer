@@ -6,9 +6,9 @@ import styles from './Countdown.module.css';
 
 export default class Countdown extends Component {
     render = () => {
-        const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer, sets, currentSet } = this.props;
+        const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer, sets, currentSet, theme } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.page} style={theme.page}>
                 <div>
                     <header className={styles.title}>
                         {resting 

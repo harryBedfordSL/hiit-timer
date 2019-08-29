@@ -45,8 +45,9 @@ class NumberSettingsPage extends Component {
     }
 
     render() {
+        const { theme } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.page} style={theme.page}>
                 <div className={styles.title}>Timings</div>
                 <div className={styles.content}>
                     {Object.keys(timings).map(elem => {

@@ -28,9 +28,9 @@ export default class EditModal extends Component {
     }
     
     render = () => {
-        const { handleClose, show, exerciseToEdit, numberInList, deleteExercise, save} = this.props;
+        const { handleClose, show, exerciseToEdit, numberInList, deleteExercise, save, theme} = this.props;
         return (
-        <div className={show ? styles.showModal : styles.hideModal}>
+        <div className={show ? styles.showModal : styles.hideModal} style={theme.modal}>
             <div className={styles.toolBar}>
                 <span className={styles.numberInList}>{numberInList}</span>
                 <NegativeButton

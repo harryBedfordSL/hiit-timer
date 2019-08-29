@@ -24,11 +24,13 @@ export default class Exercises extends Component {
     }
 
     render = () => {
+        const { theme } = this.props;
         return (
             <div className={styles.exercises}>
                 <form onSubmit={event => this.submitForm(event)}>
                     <div className={styles.interactionBar}>
-                        <input 
+                        <input
+                            style={theme.input} 
                             className={styles.input} 
                             type="text" 
                             value={this.state.inputText}

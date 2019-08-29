@@ -30,9 +30,9 @@ class ExerciseSettingsPage extends Component {
     }
 
     render() {
-        const { isConfigValid, removeExercise, editExercise } = this.props;
+        const { isConfigValid, removeExercise, editExercise, theme } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.page} style={theme.page}>
                 {this.state.showEditModal && <div className={styles.backDrop} />}
                 <EditModal
                     handleClose={this.closeEditModal}
@@ -47,17 +47,23 @@ class ExerciseSettingsPage extends Component {
                         editExercise(this.state.exerciseToEdit, updatedExercise)
                         this.setState({showEditModal: false})
                     }}
+                    theme={theme}
                 />
                 <div className={styles.content}>
                     <div className={styles.title}>Exercises</div>
                     <Exercises
+                        theme={theme}
                         exercises={this.props.exercises}
                         addExercise={this.props.addExercise}
                         openEditModal={this.openEditModal}
                         validateExerciseInput={this.props.validateExerciseInput}
                         isExerciseInputValid={this.props.isExerciseInputValid}
                     />
-                    <NavigationBar isSettingValid={isConfigValid} back={'/config'} next={'/numbers'} />
+                    <NavigationBar 
+                        isSettingValid={isConfigValid} 
+                        back={'/config'} 
+                        next={'/numbers'}
+                    />
                 </div>
             </div>
         )

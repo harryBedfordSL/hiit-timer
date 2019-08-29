@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PositiveButton from '../components/buttons/PositiveButton';
 import { Link } from 'react-router-dom';
-import styles from './WelcomePage.module.css';
 import { Icon } from 'semantic-ui-react';
 import SettingsModal from '../components/modals/SettingsModal';
+import { withRedux } from '../utils/WithRedux';
+import styles from './WelcomePage.module.css';
 
-export default class WelcomePage extends Component {
+class WelcomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,12 +29,15 @@ export default class WelcomePage extends Component {
     }
 
     render() {
+        const { theme, toggleTheme } = this.props;
         return (
-            <div className={styles.page}>
+            <div className={styles.page} style={theme.page}>
                 {this.state.showSettingsModal && <div className={styles.backdrop} />}
                 <SettingsModal
                     show={this.state.showSettingsModal}
                     handleClose={this.closeSettingsModal}
+                    toggleTheme={toggleTheme}
+                    theme={theme}
                 />
                 <div className={styles.content}>
                     <div className={styles.title}>
@@ -62,3 +66,5 @@ export default class WelcomePage extends Component {
         )
     }
 }
+
+export default withRedux(WelcomePage);
