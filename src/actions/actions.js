@@ -1,4 +1,5 @@
 import types from './types';
+import { LIGHT_THEME, DARK_THEME } from '../utils/Themes';
 
 const addingExercise = exercise => ({
     type: types.ADD_EXERCISE,
@@ -23,6 +24,11 @@ const updatingExercises = exercises => ({
 const updatingSets = sets => ({
     type: types.UPDATE_SETS,
     sets
+})
+
+const updateTheme = theme => ({
+    type: types.UPDATE_THEME,
+    theme
 })
 
 export const updateSets = (actionType, sets) => (dispatch, getState) => {
@@ -92,5 +98,16 @@ const filterState = (config, keyToRemove) => {
     return Object.keys(config)
         .filter(elem => elem !== keyToRemove)
         .reduce((acc, curr) => ({...acc, [curr]: config[curr]}), {})
+}
+
+export const toggleTheme = currentTheme => dispatch => {
+    const newTheme = currentTheme.mode === 'dark'
+        ? LIGHT_THEME
+        : DARK_THEME
+        
+    const root = document.getElementById('root');
+    root.style.backgroundColor = newTheme.page.backgroundColor;
+
+    dispatch(updateTheme(newTheme));
 }
 
