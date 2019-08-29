@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import NumberInput from '../../components/NumberInput';
 import NavigationBar from '../../components/NavigationBar';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import styles from './NumberSettingsPage.module.css';
 import { timings } from './Timings';
+import { withRedux } from '../../utils/WithRedux';
+import styles from './NumberSettingsPage.module.css';
 
-import * as actions from '../../actions/actions';
 
 class NumberSettingsPage extends Component {
     constructor(props) {
@@ -77,13 +75,4 @@ class NumberSettingsPage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    workTime: state.config.workTime,
-    restTime: state.config.restTime,
-    sets: state.config.sets,
-    isConfigValid: state.isConfigValid,
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NumberSettingsPage)
+export default withRedux(NumberSettingsPage);

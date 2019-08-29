@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import EditModal from '../../components/modals/EditModal';
 import Exercises from '../Exercises';
 import styles from './ExerciseSettingsPage.module.css';
 import NavigationBar from '../../components/NavigationBar';
-
-import * as actions from '../../actions/actions';
+import { withRedux } from '../../utils/WithRedux';
 
 class ExerciseSettingsPage extends Component {
     constructor(props) {
@@ -67,15 +64,4 @@ class ExerciseSettingsPage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    exercises: state.config.exercises,
-    workTime: state.config.workTime,
-    restTime: state.config.restTime,
-    sets: state.config.sets,
-    isConfigValid: state.isConfigValid,
-    isExerciseInputValid: state.isExerciseInputValid
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseSettingsPage)
+export default withRedux(ExerciseSettingsPage);
