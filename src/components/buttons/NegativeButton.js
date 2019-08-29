@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './NegativeButton.module.css';
 import { Icon } from 'semantic-ui-react';
+import { withRedux } from '../../utils/WithRedux';
 
-export default class NegativeButton extends Component {    
-    render = () => {
-        const { onClick, icon, size } = this.props;
-        return (
-            <button
-                className={styles.negBtn}
-                onClick={onClick}
-            >
-                <Icon
-                    className={styles.icon}
-                    name={icon} 
-                    size={size}
-                />
-            </button>
-        )
-    }
-}
+export default withRedux(function NegativeButton({ onClick, icon, size, theme}) {    
+    return (
+        <button
+            style={theme.negativeButton}
+            className={styles.negBtn}
+            onClick={onClick}
+        >
+            <Icon
+                className={styles.icon}
+                name={icon} 
+                size={size}
+            />
+        </button>
+    )
+})

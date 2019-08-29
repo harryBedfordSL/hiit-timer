@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './PositiveButton.module.css';
 import { Icon } from 'semantic-ui-react';
+import { withRedux } from '../../utils/WithRedux';
 
-export default class PositiveButton extends Component {    
-    render = () => {
-        const { disabled, onClick, icon, size } = this.props;
-        return (
-            <button
-                disabled={disabled}
-                className={disabled ? styles.disabledBtn : styles.posBtn}
-                onClick={onClick}
-            >
-                <Icon
-                    className={styles.icon}
-                    name={icon}
-                    size={size}
-                />
-            </button>
-        )
-    }
-}
+export default withRedux(function PositiveButton({disabled, onClick, icon, size, theme}) {    
+    return (
+        <button
+            style={theme.positiveButton}
+            disabled={disabled}
+            className={disabled ? styles.disabledBtn : styles.posBtn}
+            onClick={onClick}
+        >
+            <Icon
+                className={styles.icon}
+                name={icon}
+                size={size}
+            />
+        </button>
+    )
+})
