@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
     restTime: state.config.restTime,
     sets: state.config.sets,
     isConfigValid: state.isConfigValid,
-    isExerciseInputValid: state.isExerciseInputValid
+    isExerciseInputValid: state.isExerciseInputValid,
+    theme: state.theme
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
