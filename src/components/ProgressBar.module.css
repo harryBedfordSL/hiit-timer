@@ -1,0 +1,22 @@
+.tracker {
+    fill: transparent;
+    stroke-width: 0.8vh;
+}
+
+.innerTracker {
+    fill: transparent;
+    stroke-width: 1vh;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.secondsLeft {
+    font-family: 'roboto';
+    position: relative;
+    transform: translate(0%, -1000%);
+    font-size: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
