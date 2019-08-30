@@ -4,19 +4,19 @@ import { Icon } from 'semantic-ui-react';
 
 export default class Toggle extends Component {
     render() {
-        const { isLightMode, handleChange, args, leftIcon, rightIcon } = this.props;
+        const { checked, handleChange, args, leftIcon, rightIcon, id } = this.props;
         return (
             <div className={styles.toggle}>
                 <input
-                    checked={isLightMode}
-                    onChange={() => handleChange(args)}
+                    checked={checked}
+                    onChange={() => handleChange && handleChange(args)}
                     className={styles.checkbox}
-                    id={`react-switch-new`}
+                    id={id}
                     type='checkbox'
                 />
                 <label
                     className={styles.label}
-                    htmlFor={`react-switch-new`}
+                    htmlFor={id}
                 >
                     <div className={styles.themeIcon}>
                         <Icon 

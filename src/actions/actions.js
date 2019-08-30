@@ -31,6 +31,11 @@ const updateTheme = theme => ({
     theme
 })
 
+const updateSoundMode = soundOn => ({
+    type: types.UPDATE_SOUND_MODE,
+    soundOn
+})
+
 export const updateSets = (actionType, sets) => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'sets');
     const isConfigValid = validateConfig(filteredConfig);
@@ -109,5 +114,10 @@ export const toggleTheme = currentTheme => dispatch => {
     root.style.backgroundColor = newTheme.page.backgroundColor;
 
     dispatch(updateTheme(newTheme));
+}
+
+export const toggleSound = currentSoundOn => dispatch => {
+    const newSoundMode = !currentSoundOn;
+    dispatch(updateSoundMode(newSoundMode))
 }
 

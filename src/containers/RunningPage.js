@@ -47,16 +47,16 @@ class RunningPage extends Component {
 
     tick = () => {
         const { secondsLeft, resting, exerciseNumber, currentSet } = this.state;
-        const { restTime, workTime, exercises, sets } = this.props;
+        const { restTime, workTime, exercises, sets, soundOn } = this.props;
         if (secondsLeft > 4) {
             this.setState({secondsLeft: secondsLeft - 1})
         }
         else if (1 < secondsLeft && secondsLeft <= 4) {
             this.setState({secondsLeft: secondsLeft - 1})
-            this.shortBeep.play();
+            soundOn && this.shortBeep.play();
         }
         else {
-            this.longBeep.play();
+            soundOn && this.longBeep.play();
             this.stopTimer();
             const newExerciseNumber = resting ? exerciseNumber + 1 : exerciseNumber;
             this.setState({
