@@ -3,10 +3,12 @@ import PositiveButton from './buttons/PositiveButton';
 import NegativeButton from './buttons/NegativeButton';
 import { Link } from 'react-router-dom';
 import styles from './Countdown.module.css';
+import ProgressBar from './ProgressBar';
 
 export default class Countdown extends Component {
     render = () => {
-        const { resting, currentExercise, nextExercise, secondsLeft, startPauseIcon, startOrPause, stopTimer, sets, currentSet, theme } = this.props;
+        const { resting, currentExercise, nextExercise, secondsLeft, totalTime, startPauseIcon, startOrPause, stopTimer, sets, currentSet, theme } = this.props;
+        const percentLeft = ((secondsLeft) / totalTime) * 100;
         return (
             <div className={styles.page} style={theme.page}>
                 <div>
@@ -20,9 +22,12 @@ export default class Countdown extends Component {
                         {resting && `Next: ${nextExercise}`}
                     </div>
                 </div>
-                <div className={styles.timer}>
-                    {secondsLeft}
-                </div>
+                <ProgressBar
+                    percentageLeft={percentLeft}
+                    totalTime={totalTime}
+                    secondsLeft={secondsLeft}
+                    resting={resting}
+                />
                 <div>
                     Set: {currentSet} / {sets}
                 </div>
