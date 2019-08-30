@@ -29,7 +29,7 @@ class WelcomePage extends Component {
     }
 
     render() {
-        const { theme, toggleTheme } = this.props;
+        const { theme, toggleTheme, soundOn, toggleSound } = this.props;
         return (
             <div className={styles.page} style={theme.page}>
                 {this.state.showSettingsModal && <div className={styles.backdrop} />}
@@ -38,6 +38,8 @@ class WelcomePage extends Component {
                     handleClose={this.closeSettingsModal}
                     toggleTheme={toggleTheme}
                     theme={theme}
+                    soundOn={soundOn}
+                    toggleSound={toggleSound}
                 />
                 <div className={styles.content}>
                     <div className={styles.title}>
