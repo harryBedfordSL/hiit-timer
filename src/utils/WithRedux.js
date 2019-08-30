@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
     sets: state.config.sets,
     isConfigValid: state.isConfigValid,
     isExerciseInputValid: state.isExerciseInputValid,
-    theme: state.theme
+    theme: state.theme,
+    soundOn: state.soundOn
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

@@ -9,5 +9,6 @@ export const INITIAL_STATE = {
     },
     isConfigValid: false,
     isExerciseInputValid: false,
-    theme: DARK_THEME
+    theme: DARK_THEME,
+    soundOn: true
 }
