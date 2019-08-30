@@ -42,18 +42,18 @@ class RunningPage extends Component {
     }
 
     startTimer = () => {
-        this.timer = setInterval(this.tick, 1000)
+        this.timer = setInterval(this.tick, 100)
     }
 
     tick = () => {
         const { secondsLeft, resting, exerciseNumber, currentSet } = this.state;
         const { restTime, workTime, exercises, sets, soundOn } = this.props;
         if (secondsLeft > 4) {
-            this.setState({secondsLeft: secondsLeft - 1})
+            this.setState({secondsLeft: secondsLeft - 0.1})
         }
-        else if (1 < secondsLeft && secondsLeft <= 4) {
-            this.setState({secondsLeft: secondsLeft - 1})
-            soundOn && this.shortBeep.play();
+        else if (0.1 < secondsLeft && secondsLeft <= 4) {
+            this.setState({secondsLeft: secondsLeft - 0.1})
+            parseFloat(secondsLeft).toFixed(1) % 1 === 0 && soundOn && this.shortBeep.play();
         }
         else {
             soundOn && this.longBeep.play();
@@ -75,7 +75,7 @@ class RunningPage extends Component {
                     this.setState({
                         exerciseNumber: -1,
                         currentSet: newSetNumber,
-                        secondsLeft: 2*restTime,
+                        secondsLeft: restTime,
                         resting: true
                     });
                     this.startTimer();
@@ -88,7 +88,7 @@ class RunningPage extends Component {
 
     render = () => {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
-        const { theme } = this.props;
+        const { theme, workTime, restTime } = this.props;
         return (
             <div>
                 {!this.props.isConfigValid && <Redirect to='/welcome' />}
@@ -98,6 +98,7 @@ class RunningPage extends Component {
                         resting={resting}
                         currentExercise={this.props.exercises[exerciseNumber]}
                         nextExercise={this.props.exercises[exerciseNumber+1]}
+                        totalTime={resting ? restTime : workTime}
                         secondsLeft={secondsLeft}
                         startPauseIcon={startPauseIcon}
                         startOrPause={this.startOrPause}
