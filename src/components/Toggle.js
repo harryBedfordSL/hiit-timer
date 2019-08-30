@@ -9,9 +9,7 @@ export default class Toggle extends Component {
             <div className={styles.toggle}>
                 <input
                     checked={checked}
-                    onChange={() => {
-                        handleChange && handleChange(args)
-                    }}
+                    onChange={() => handleChange && handleChange(args)}
                     className={styles.checkbox}
                     id={id}
                     type='checkbox'
