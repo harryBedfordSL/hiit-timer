@@ -6,6 +6,7 @@ export default {
     UPDATE_REST_TIME: "update_rest_time",
     UPDATE_SETS: "update_sets",
     UPDATE_THEME: "update_theme",
+    UPDATE_SOUND_MODE: "update_sound_mode",
     IS_CONFIG_VALID: "is_config_valid",
     IS_EXERCISE_INPUT_VALID: "is_exercise_input_valid"
 };
