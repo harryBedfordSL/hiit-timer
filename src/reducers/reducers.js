@@ -54,6 +54,13 @@ export default (state = INITIAL_STATE, action) => {
                 theme: action.theme
             }
 
+
+        case types.UPDATE_SOUND_MODE: 
+            return {
+                ...state,
+                soundOn: action.soundOn
+            }
+
         case types.IS_CONFIG_VALID:
             return {
                 ...state,
