@@ -44,7 +44,7 @@
     flex-direction: column;
 }
 
-.theme {
+.setting {
     width: 75vw;
     display: flex;
     justify-content: space-around;

@@ -5,7 +5,7 @@ import Toggle from '../Toggle';
 
 export default class SettingsModal extends Component {
     render = () => {
-        const { handleClose, show, toggleTheme, theme } = this.props;
+        const { handleClose, show, toggleTheme, theme, toggleSound, soundOn } = this.props;
         return (
             <div className={show ? styles.showModal : styles.hideModal} style={theme.modal}>
                 <div className={styles.toolbar}>
@@ -19,13 +19,25 @@ export default class SettingsModal extends Component {
                     Settings
                 </div>
                 <div className={styles.modalBody}>
-                    <div className={styles.theme}>
+                    <div className={styles.setting}>
+                        Sound
+                        <Toggle
+                            id='sound-setting'
+                            leftIcon='alarm mute'
+                            rightIcon='alarm'
+                            checked={!soundOn}
+                            handleChange={toggleSound}
+                            args={soundOn}
+                        />
+                    </div>
+                    <div className={styles.setting}>
                         Theme
                         <Toggle 
+                            id='theme-setting'
                             leftIcon='sun'
                             rightIcon='moon'
+                            checked={theme.mode === 'light'}
                             handleChange={toggleTheme}
-                            isLightMode={theme.mode === 'light'}
                             args={theme}
                         />
                     </div>
