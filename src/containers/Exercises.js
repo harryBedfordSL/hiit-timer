@@ -36,7 +36,11 @@ export default class Exercises extends Component {
                             value={this.state.inputText}
                             onChange={this.onChange}
                         />
-                        <PositiveButton icon='plus' disabled={!this.props.isExerciseInputValid} />
+                        <PositiveButton 
+                            icon='plus' 
+                            disabled={!this.props.isExerciseInputValid} 
+                            theme={theme}    
+                        />
                     </div>
                 </form>
                 <div className={styles.exerciseContainer}>

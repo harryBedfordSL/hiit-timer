@@ -40,6 +40,7 @@ export default class EditModal extends Component {
                     }}
                     icon='close'
                     size='small'
+                    theme={theme}
                 />
             </div>
             <div className={styles.modalBody}>
@@ -60,7 +61,9 @@ export default class EditModal extends Component {
                             this.setState({editing: false})
                         }}
                         icon='trash'
-                        size='big'/>
+                        size='big'
+                        theme={theme}    
+                    />
                     {this.state.editing
                         ? <PositiveButton
                             onClick={() => {
@@ -70,11 +73,14 @@ export default class EditModal extends Component {
                             icon='save'
                             size='big'
                             disabled={this.state.disableSave} 
+                            theme={theme}
                         />
                         : <PositiveButton
                             onClick={() => this.enableEditMode(exerciseToEdit)}
                             icon='edit'
-                            size='big' />
+                            size='big' 
+                            theme={theme}    
+                        />
                     }
                 </div>
             </div>

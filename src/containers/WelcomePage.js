@@ -53,6 +53,7 @@ class WelcomePage extends Component {
                             <PositiveButton
                                 icon={'angle right'}
                                 size='big'
+                                theme={theme}
                             />
                         </Link>
                     </div>

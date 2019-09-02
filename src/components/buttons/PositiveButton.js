@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './PositiveButton.module.css';
 import { Icon } from 'semantic-ui-react';
-import { withRedux } from '../../utils/WithRedux';
 
-export default withRedux(function PositiveButton({disabled, onClick, icon, size, theme}) {    
+export default function PositiveButton({disabled, onClick, icon, size, theme}) {    
     return (
         <button
             style={theme.positiveButton}
@@ -18,4 +17,4 @@ export default withRedux(function PositiveButton({disabled, onClick, icon, size,
             />
         </button>
     )
-})
+}
