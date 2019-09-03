@@ -13,6 +13,7 @@ export default class SettingsModal extends Component {
                         onClick={() => handleClose()}
                         icon='close'
                         size='small'
+                        theme={theme}
                     />
                 </div>
                 <div className={styles.title}>

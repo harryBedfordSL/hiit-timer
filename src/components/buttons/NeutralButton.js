@@ -1,9 +1,8 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import styles from './NeutralButton.module.css';
-import { withRedux } from '../../utils/WithRedux';
 
-export default withRedux(function NeutralButton({ handleClick, args, icon, size, disabled, theme }) {
+export default function NeutralButton({ handleClick, args, icon, size, disabled, theme }) {
     return (
         <button
             style={theme.neutralButton}
@@ -19,4 +18,4 @@ export default withRedux(function NeutralButton({ handleClick, args, icon, size,
             />
         </button>
     )
-})
+}

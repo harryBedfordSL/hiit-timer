@@ -4,7 +4,7 @@ import NeutralButton from './buttons/NeutralButton';
 
 export default class NumberInput extends Component {
     render = () => {
-        const { inputTitle, increment, id, value, min, max, onChange, action} = this.props;
+        const { inputTitle, increment, id, value, min, max, onChange, action, theme} = this.props;
         return (
             <div>
                 <div>
@@ -16,6 +16,7 @@ export default class NumberInput extends Component {
                         handleClick={increment}
                         args={{direction: 'minus', target: id, prevValue: value, action}}
                         icon='minus'
+                        theme={theme}
                     />
                     <div>
                         <input
@@ -34,6 +35,7 @@ export default class NumberInput extends Component {
                         handleClick={increment}
                         args={{direction: 'plus', target: id, prevValue: value, action}}
                         icon='plus'
+                        theme={theme}
                     />
                 </div>
             </div>

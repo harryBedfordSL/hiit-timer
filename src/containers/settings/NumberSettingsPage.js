@@ -66,11 +66,17 @@ class NumberSettingsPage extends Component {
                                 unit={currObj.unit}
                                 value={value}
                                 action={action}
+                                theme={theme}
                             />
                         )
                     })}
                 </div>
-                <NavigationBar isSettingValid={this.props.isConfigValid} back={'/exercises'} next={'/running'} />
+                <NavigationBar 
+                    isSettingValid={this.props.isConfigValid} 
+                    back={'/exercises'} 
+                    next={'/running'} 
+                    theme={theme}
+                />
             </div>
         )
     }

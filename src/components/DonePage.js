@@ -13,7 +13,8 @@ export default withRedux(function DonePage({theme}) {
             <Link to="/welcome" className={styles.btn}>
                 <PositiveButton
                     icon='repeat'
-                    size='big'    
+                    size='big'   
+                    theme={theme} 
                 />
             </Link>
         </div>

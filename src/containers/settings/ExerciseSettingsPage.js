@@ -63,6 +63,7 @@ class ExerciseSettingsPage extends Component {
                         isSettingValid={isConfigValid} 
                         back={'/config'} 
                         next={'/numbers'}
+                        theme={theme}
                     />
                 </div>
             </div>

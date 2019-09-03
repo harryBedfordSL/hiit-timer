@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Negative button tests renders without crashing (with snapshot) 1`] = `
+<button
+  className="negBtn"
+  onClick={[Function]}
+>
+  <i
+    aria-hidden="true"
+    className="close small icon icon"
+    onClick={[Function]}
+  />
+</button>
+`;
