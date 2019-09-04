@@ -43,7 +43,7 @@
     width: 100%;
     position: fixed;
     animation-name: fadeIn;
-    animation-duration: 0.5s
+    animation-duration: 0.5s;
 }
 
 @keyframes fadeIn {

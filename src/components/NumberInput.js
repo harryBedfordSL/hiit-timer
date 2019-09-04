@@ -20,6 +20,7 @@ export default class NumberInput extends Component {
                     />
                     <div>
                         <input
+                            style={theme.input}
                             id={id}
                             className={styles.input}
                             type='number'

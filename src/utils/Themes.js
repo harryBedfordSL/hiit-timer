@@ -5,7 +5,8 @@ export const LIGHT_THEME = {
         color: 'black'
     },
     modal: {
-        backgroundColor: '#c4c4c4',
+        backgroundColor: '#c8c8c8',
+        transition: 'background-color 0.5s ease 0s'
     },
     input: {
         backgroundColor: '#d0d0d0'
@@ -29,6 +30,7 @@ export const DARK_THEME = {
     },
     modal: {
         backgroundColor: '#464646',
+        transition: 'background-color 0.5s ease 0s'
     },
     input: {
         backgroundColor: 'white'
