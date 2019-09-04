@@ -6,7 +6,7 @@ import SettingsModal from '../components/modals/SettingsModal';
 import { withRedux } from '../utils/WithRedux';
 import styles from './WelcomePage.module.css';
 
-class WelcomePage extends Component {
+export class WelcomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -60,6 +60,7 @@ class WelcomePage extends Component {
                 </div>
                 <div className={styles.settings}>
                     <Icon
+                        className={styles.settingsButton}
                         name='setting'
                         size='big'
                         onClick={this.openSettingsModal}

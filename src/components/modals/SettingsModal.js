@@ -10,6 +10,7 @@ export default class SettingsModal extends Component {
             <div className={show ? styles.showModal : styles.hideModal} style={theme.modal}>
                 <div className={styles.toolbar}>
                     <NegativeButton
+                        className={styles.closeButton}
                         onClick={() => handleClose()}
                         icon='close'
                         size='small'

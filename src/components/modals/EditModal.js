@@ -13,18 +13,18 @@ export default class EditModal extends Component {
     }
 
     enableEditMode = (exerciseToEdit) => {
-        const isInputValid = exerciseToEdit.length !== 0; 
+        const shouldDisableSave = exerciseToEdit.length === 0; 
         this.setState({
             editing: true,
             editedExercise: exerciseToEdit,
-            disableSave: !isInputValid
+            disableSave: shouldDisableSave
         })
     }
 
     onChange = (event) => {
         const input = event.target.value;
-        const isInputValid = input.length !== 0; 
-        this.setState({editedExercise: input, disableSave: !isInputValid});
+        const shouldDisableSave = input.length === 0; 
+        this.setState({editedExercise: input, disableSave: shouldDisableSave});
     }
     
     render = () => {
@@ -34,6 +34,7 @@ export default class EditModal extends Component {
             <div className={styles.toolBar}>
                 <span className={styles.numberInList}>{numberInList}</span>
                 <NegativeButton
+                    className={styles.closeModal}
                     onClick={() => {
                         handleClose()
                         this.setState({editing: false})
@@ -56,6 +57,7 @@ export default class EditModal extends Component {
                 }
                 <div className={styles.options}>
                     <NegativeButton
+                        className={styles.deleteExercise}
                         onClick={() => {
                             deleteExercise()
                             this.setState({editing: false})
@@ -66,6 +68,7 @@ export default class EditModal extends Component {
                     />
                     {this.state.editing
                         ? <PositiveButton
+                            className={styles.saveButton}
                             onClick={() => {
                                 save(this.state.editedExercise)
                                 this.setState({editing: false})
@@ -76,6 +79,7 @@ export default class EditModal extends Component {
                             theme={theme}
                         />
                         : <PositiveButton
+                            className={styles.editButton}
                             onClick={() => this.enableEditMode(exerciseToEdit)}
                             icon='edit'
                             size='big' 
