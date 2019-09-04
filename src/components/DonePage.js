@@ -4,7 +4,7 @@ import PositiveButton from './buttons/PositiveButton';
 import styles from './DonePage.module.css';
 import { withRedux } from '../utils/WithRedux';
 
-export default withRedux(function DonePage({theme}) {
+export function DonePage({theme}) {
     return (
         <div className={styles.page} style={theme.page}>
             <div className={styles.title}>
@@ -19,4 +19,6 @@ export default withRedux(function DonePage({theme}) {
             </Link>
         </div>
     )
-})
+}
+
+export default withRedux(DonePage);
