@@ -88,7 +88,7 @@ class RunningPage extends Component {
 
     render = () => {
         const { exerciseNumber, resting, secondsLeft, startPauseIcon, finished, currentSet } = this.state;
-        const { theme, workTime, restTime } = this.props;
+        const { theme, workTime, restTime, isRadialCounterOn } = this.props;
         return (
             <div>
                 {!this.props.isConfigValid && <Redirect to='/welcome' />}
@@ -106,6 +106,7 @@ class RunningPage extends Component {
                         sets={this.props.sets}
                         currentSet={currentSet}
                         theme={theme}
+                        isRadialCounterOn={isRadialCounterOn}
                     />
                 }
             </div>

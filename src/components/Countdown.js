@@ -7,7 +7,7 @@ import ProgressBar from './ProgressBar';
 
 export default class Countdown extends Component {
     render = () => {
-        const { resting, currentExercise, nextExercise, secondsLeft, totalTime, startPauseIcon, startOrPause, stopTimer, sets, currentSet, theme } = this.props;
+        const { resting, currentExercise, nextExercise, secondsLeft, totalTime, startPauseIcon, startOrPause, stopTimer, sets, currentSet, theme, isRadialCounterOn } = this.props;
         const percentLeft = ((secondsLeft) / totalTime) * 100;
         return (
             <div className={styles.page} style={theme.page}>
@@ -27,6 +27,7 @@ export default class Countdown extends Component {
                     totalTime={totalTime}
                     secondsLeft={secondsLeft}
                     resting={resting}
+                    isRadialCounterOn={isRadialCounterOn}
                 />
                 <div>
                     Set: {currentSet} / {sets}

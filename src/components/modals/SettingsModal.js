@@ -5,7 +5,7 @@ import Toggle from '../Toggle';
 
 export default class SettingsModal extends Component {
     render = () => {
-        const { handleClose, show, toggleTheme, theme, toggleSound, soundOn } = this.props;
+        const { handleClose, show, toggleTheme, theme, toggleSound, soundOn, isRadialCounterOn, toggleRadialCounter } = this.props;
         return (
             <div className={show ? styles.showModal : styles.hideModal} style={theme.modal}>
                 <div className={styles.toolbar}>
@@ -41,6 +41,17 @@ export default class SettingsModal extends Component {
                             checked={theme.mode === 'light'}
                             handleChange={toggleTheme}
                             args={theme}
+                        />
+                    </div>
+                    <div className={styles.setting}>
+                        Radial Counter
+                        <Toggle 
+                            id='counter-setting'
+                            rightIcon='check'
+                            leftIcon='close'
+                            checked={!isRadialCounterOn}
+                            handleChange={toggleRadialCounter}
+                            args={isRadialCounterOn}
                         />
                     </div>
                 </div>
