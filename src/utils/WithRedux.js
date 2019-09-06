@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
     isConfigValid: state.isConfigValid,
     isExerciseInputValid: state.isExerciseInputValid,
     theme: state.theme,
-    soundOn: state.soundOn
+    soundOn: state.soundOn,
+    isRadialCounterOn: state.isRadialCounterOn
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

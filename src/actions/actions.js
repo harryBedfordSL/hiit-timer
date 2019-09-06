@@ -36,6 +36,15 @@ const updateSoundMode = soundOn => ({
     soundOn
 })
 
+const updateRadialCounterMode = isRadialCounterOn => ({
+    type: types.IS_RADIAL_COUNTER_ON,
+    isRadialCounterOn
+})
+
+export const toggleRadialCounter = currRadialCounterOn => dispatch => {
+    dispatch(updateRadialCounterMode(!currRadialCounterOn))
+}
+
 export const updateSets = (actionType, sets) => (dispatch, getState) => {
     const filteredConfig = filterState(getState().config, 'sets');
     const isConfigValid = validateConfig(filteredConfig);

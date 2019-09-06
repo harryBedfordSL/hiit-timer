@@ -73,6 +73,12 @@ export default (state = INITIAL_STATE, action) => {
                 isExerciseInputValid: action.isValid
             };
 
+        case types.IS_RADIAL_COUNTER_ON:
+            return {
+                ...state,
+                isRadialCounterOn: action.isRadialCounterOn
+            }
+
         default:
              return state;
     }
