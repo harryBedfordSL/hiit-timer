@@ -29,7 +29,7 @@ export class WelcomePage extends Component {
     }
 
     render() {
-        const { theme, toggleTheme, soundOn, toggleSound } = this.props;
+        const { theme, toggleTheme, soundOn, toggleSound, isRadialCounterOn, toggleRadialCounter } = this.props;
         return (
             <div className={styles.page} style={theme.page}>
                 {this.state.showSettingsModal && <div className={styles.backdrop} />}
@@ -40,6 +40,8 @@ export class WelcomePage extends Component {
                     theme={theme}
                     soundOn={soundOn}
                     toggleSound={toggleSound}
+                    isRadialCounterOn={isRadialCounterOn}
+                    toggleRadialCounter={toggleRadialCounter}
                 />
                 <div className={styles.content}>
                     <div className={styles.title}>

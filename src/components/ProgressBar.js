@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProgressBar.module.css';
 
-const ProgressBar = ({ percentageLeft, secondsLeft, resting, totalTime }) => {
+const ProgressBar = ({ percentageLeft, secondsLeft, resting, totalTime, isRadialCounterOn }) => {
     const appliedRadius = 175;
     const appliedStroke = 10;
     const normalizedRadius = appliedRadius - appliedStroke * 2;
@@ -13,10 +13,13 @@ const ProgressBar = ({ percentageLeft, secondsLeft, resting, totalTime }) => {
     const displayNumber = secondsLeft < 10 
         ? parseFloat(secondsLeft).toFixed(1).toString().padStart(4, 0)
         : parseFloat(secondsLeft).toFixed(1)
+    const secondsLeftPosition = isRadialCounterOn 
+        ? { transform: 'translate(0%, -1000%)' }
+        : {}
 
     return (
         <div id="react-progress-circle">
-            <svg height={appliedRadius * 2} width={appliedRadius * 2}>
+            {isRadialCounterOn && <svg height={appliedRadius * 2} width={appliedRadius * 2}>
                 <g>
                     <circle
                         className={styles.tracker}
@@ -36,8 +39,8 @@ const ProgressBar = ({ percentageLeft, secondsLeft, resting, totalTime }) => {
                         cy={appliedRadius}
                     />  
                 </g>
-            </svg>
-            <div className={styles.secondsLeft}>
+            </svg>}
+            <div className={styles.secondsLeft} style={secondsLeftPosition}>
                 {displayNumber}
             </div>
         </div>
